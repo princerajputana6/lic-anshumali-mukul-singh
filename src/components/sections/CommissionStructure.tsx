@@ -57,10 +57,10 @@ export function CommissionStructure() {
     <section id="commission" className="py-20 sm:py-32 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#000000', textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
+          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
             Commission Structure
           </h2>
-          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#000000', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
             Understand how you can earn with LIC's transparent and rewarding commission structure. 
             The more you sell, the more you earn - with no upper limit.
           </p>
@@ -89,8 +89,8 @@ export function CommissionStructure() {
                     {tier.description}
                   </p>
                   <div className="bg-neutral-50 rounded-lg p-4">
-                    <div className="text-sm font-medium text-neutral-700 mb-1">Example:</div>
-                    <div className="text-lg font-semibold text-primary-600">{tier.example}</div>
+                    <div className="text-sm font-medium mb-1" style={{color: '#1e40af'}}>Example:</div>
+                    <div className="text-lg font-semibold" style={{color: '#1e40af'}}>{tier.example}</div>
                   </div>
                 </CardContent>
               </Card>
@@ -117,11 +117,11 @@ export function CommissionStructure() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-neutral-200">
-                      <th className="text-left py-4 px-4 font-semibold text-neutral-700">Policies/Month</th>
-                      <th className="text-left py-4 px-4 font-semibold text-neutral-700">Avg Premium</th>
-                      <th className="text-left py-4 px-4 font-semibold text-neutral-700">First Year</th>
-                      <th className="text-left py-4 px-4 font-semibold text-neutral-700">Annual Renewal</th>
-                      <th className="text-left py-4 px-4 font-semibold text-neutral-700">Total Monthly</th>
+                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>Policies/Month</th>
+                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>Avg Premium</th>
+                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>First Year</th>
+                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>Annual Renewal</th>
+                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>Total Monthly</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -130,17 +130,17 @@ export function CommissionStructure() {
                         <td className="py-4 px-4">
                           <div className="flex items-center">
                             <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                              <span className="text-primary-600 font-semibold text-sm">{example.policies}</span>
+                              <span className="font-semibold text-sm" style={{color: '#1e40af'}}>{example.policies}</span>
                             </div>
-                            {example.policies} policies
+                            <span style={{color: '#000000'}}>{example.policies} policies</span>
                           </div>
                         </td>
-                        <td className="py-4 px-4 font-medium">₹{example.premium.toLocaleString()}</td>
+                        <td className="py-4 px-4 font-medium" style={{color: '#000000'}}>₹{example.premium.toLocaleString()}</td>
                         <td className="py-4 px-4 font-medium text-green-600">₹{example.firstYear.toLocaleString()}</td>
                         <td className="py-4 px-4 font-medium text-blue-600">₹{example.renewal.toLocaleString()}</td>
                         <td className="py-4 px-4">
                           <div className="font-bold text-lg text-primary-600">₹{example.total.toLocaleString()}</div>
-                          <div className="text-xs text-neutral-500">per month</div>
+                          <div className="text-xs font-semibold" style={{color: '#000000'}}>per month</div>
                         </td>
                       </tr>
                     ))}
@@ -182,7 +182,7 @@ export function CommissionStructure() {
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <TrendingUp className="h-6 w-6 text-neutral-900" />
+                  <TrendingUp className="h-6 w-6" style={{color: '#1e40af'}} />
                 </div>
                 <div className="font-medium text-neutral-900">Foreign Trips</div>
                 <div className="text-sm text-neutral-600 mt-1">International incentive tours</div>

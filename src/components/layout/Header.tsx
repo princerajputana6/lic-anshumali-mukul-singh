@@ -24,10 +24,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-blue-800" style={{backgroundColor: '#1e40af'}}>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <Logo size="md" className='w-full h-full' />
+            <Logo size="lg" />
           </Link>
         </div>
         
@@ -38,7 +38,7 @@ export function Header() {
             style={{color: '#ffffff'}}
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only" style={{color: '#1e40af'}}>Open main menu</span>
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>

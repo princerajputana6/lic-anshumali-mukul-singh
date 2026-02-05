@@ -52,10 +52,10 @@ export function ValuePropositions() {
     <section id="value-props" className="py-20 sm:py-32 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#000000', textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
+          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
             Why Choose LIC Agent Career?
           </h2>
-          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#000000', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
             Join thousands of successful agents who have transformed their lives with LIC's 
             comprehensive support system and unlimited growth opportunities.
           </p>
@@ -72,18 +72,18 @@ export function ValuePropositions() {
                 <CardContent className="p-8">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 group-hover:bg-primary-500 transition-colors duration-300">
-                      <IconComponent className="h-6 w-6 text-primary-600 group-hover:text-white transition-colors duration-300" />
+                      <IconComponent className="h-6 w-6 group-hover:text-white transition-colors duration-300" style={{color: '#1e40af'}} />
                     </div>
-                    <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium text-accent-800">
+                    <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium" style={{color: '#1e40af'}}>
                       {prop.highlight}
                     </span>
                   </div>
                   
-                  <h3 className="font-heading text-xl font-black mb-3" style={{color: '#000000', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+                  <h3 className="font-heading text-xl font-black mb-3" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                     {prop.title}
                   </h3>
                   
-                  <p className="font-bold leading-relaxed" style={{color: '#000000', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+                  <p className="font-bold leading-relaxed" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                     {prop.description}
                   </p>
                 </CardContent>
@@ -93,27 +93,27 @@ export function ValuePropositions() {
         </div>
 
         {/* Additional Benefits */}
-        <div className="mt-20 rounded-2xl bg-gradient-to-r from-secondary-800 to-secondary-900 p-8 sm:p-12">
+        <div className="mt-20 rounded-2xl p-8 sm:p-12" style={{backgroundColor: '#ffc908'}}>
           <div className="mx-auto max-w-4xl text-center">
-            <h3 className="font-heading text-2xl font-bold text-white sm:text-3xl">
+            <h3 className="font-heading text-2xl font-bold sm:text-3xl" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
               Start Your Journey Today
             </h3>
-            <p className="mt-4 text-lg text-accent-200">
+            <p className="mt-4 text-lg font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
               No prior experience required • Complete training provided • Start earning immediately
             </p>
             
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-3xl font-bold text-white">0</div>
-                <div className="text-accent-200 text-sm mt-1">Investment Required</div>
+              <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                <div className="text-3xl font-bold" style={{color: '#1e40af'}}>0</div>
+                <div className="text-sm mt-1 font-semibold" style={{color: '#1e40af'}}>Investment Required</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-3xl font-bold text-white">25hrs</div>
-                <div className="text-accent-200 text-sm mt-1">Training Duration</div>
+              <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                <div className="text-3xl font-bold" style={{color: '#1e40af'}}>25hrs</div>
+                <div className="text-sm mt-1 font-semibold" style={{color: '#1e40af'}}>Training Duration</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-3xl font-bold text-white">Day 1</div>
-                <div className="text-accent-200 text-sm mt-1">Start Earning</div>
+              <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                <div className="text-3xl font-bold" style={{color: '#1e40af'}}>Day 1</div>
+                <div className="text-sm mt-1 font-semibold" style={{color: '#1e40af'}}>Start Earning</div>
               </div>
             </div>
           </div>

@@ -69,10 +69,10 @@ export default function AboutPage() {
         <section className="py-20 sm:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <h1 className="font-heading text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+              <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
                 About LIC Career
               </h1>
-              <p className="mt-6 text-lg leading-8 text-neutral-600">
+              <p className="mt-6 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                 We are dedicated to helping individuals build successful careers as LIC insurance advisors. 
                 With over 15 years of experience, we have guided thousands of agents to financial independence.
               </p>
@@ -90,11 +90,11 @@ export default function AboutPage() {
                   <div key={index} className="text-center">
                     <div className="flex justify-center mb-4">
                       <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                        <IconComponent className="h-8 w-8 text-primary-600" />
+                        <IconComponent className="h-8 w-8" style={{color: '#1e40af'}} />
                       </div>
                     </div>
-                    <div className="text-3xl font-bold text-neutral-900">{stat.value}</div>
-                    <div className="text-sm text-neutral-600 mt-1">{stat.label}</div>
+                    <div className="text-3xl font-bold" style={{color: '#1e40af'}}>{stat.value}</div>
+                    <div className="text-sm mt-1 font-semibold" style={{color: '#1e40af'}}>{stat.label}</div>
                   </div>
                 )
               })}
@@ -108,15 +108,15 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <Card className="shadow-medium border-0">
                 <CardContent className="p-8">
-                  <h2 className="font-heading text-2xl font-bold text-neutral-900 mb-4">
+                  <h2 className="font-heading text-2xl font-bold mb-4" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                     Our Mission
                   </h2>
-                  <p className="text-neutral-600 leading-relaxed mb-6">
+                  <p className="leading-relaxed mb-6 font-semibold" style={{color: '#1e40af'}}>
                     To empower individuals from all backgrounds to build successful and sustainable careers 
                     in the insurance industry through comprehensive training, ongoing support, and proven 
                     business strategies.
                   </p>
-                  <p className="text-neutral-600 leading-relaxed">
+                  <p className="leading-relaxed font-semibold" style={{color: '#1e40af'}}>
                     We believe that everyone deserves the opportunity to achieve financial independence, 
                     and we are committed to providing the tools, knowledge, and support needed to make 
                     that dream a reality.
@@ -126,15 +126,15 @@ export default function AboutPage() {
 
               <Card className="shadow-medium border-0">
                 <CardContent className="p-8">
-                  <h2 className="font-heading text-2xl font-bold text-neutral-900 mb-4">
+                  <h2 className="font-heading text-2xl font-bold mb-4" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                     Our Vision
                   </h2>
-                  <p className="text-neutral-600 leading-relaxed mb-6">
+                  <p className="leading-relaxed mb-6 font-semibold" style={{color: '#1e40af'}}>
                     To be the leading platform for insurance career development in India, recognized 
                     for our commitment to agent success, innovative training methods, and exceptional 
                     support services.
                   </p>
-                  <p className="text-neutral-600 leading-relaxed">
+                  <p className="leading-relaxed font-semibold" style={{color: '#1e40af'}}>
                     We envision a future where every motivated individual has access to the resources 
                     and opportunities needed to build a thriving insurance career and achieve their 
                     financial goals.
@@ -149,10 +149,10 @@ export default function AboutPage() {
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center mb-16">
-              <h2 className="font-heading text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+              <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
                 Our Values
               </h2>
-              <p className="mt-4 text-lg leading-8 text-neutral-600">
+              <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                 The principles that guide everything we do
               </p>
             </div>
@@ -165,13 +165,13 @@ export default function AboutPage() {
                     <CardContent className="p-8">
                       <div className="flex justify-center mb-6">
                         <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                          <IconComponent className="h-8 w-8 text-primary-600" />
+                          <IconComponent className="h-8 w-8" style={{color: '#1e40af'}} />
                         </div>
                       </div>
-                      <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-4">
+                      <h3 className="font-heading text-xl font-semibold mb-4" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                         {value.title}
                       </h3>
-                      <p className="text-neutral-600 leading-relaxed">
+                      <p className="leading-relaxed font-semibold" style={{color: '#1e40af'}}>
                         {value.description}
                       </p>
                     </CardContent>
@@ -186,10 +186,10 @@ export default function AboutPage() {
         <section className="py-20 bg-neutral-50">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center mb-16">
-              <h2 className="font-heading text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+              <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
                 Meet Our Team
               </h2>
-              <p className="mt-4 text-lg leading-8 text-neutral-600">
+              <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                 Experienced professionals dedicated to your success
               </p>
             </div>
@@ -219,12 +219,12 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-primary-500 to-secondary-600">
+        <section className="py-20" style={{backgroundColor: '#ffc908'}}>
           <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-            <h2 className="font-heading text-3xl font-bold text-white mb-4">
+            <h2 className="font-heading text-3xl font-bold mb-4" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
               Ready to Start Your Journey?
             </h2>
-            <p className="text-primary-100 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 max-w-2xl mx-auto font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
               Join thousands of successful agents who have built their careers with our support. 
               Take the first step towards financial independence today.
             </p>
@@ -233,6 +233,8 @@ export default function AboutPage() {
                 <Button
                   size="xl"
                   variant="accent"
+                  className="hover:bg-blue-800"
+                  style={{backgroundColor: '#1e40af', color: '#ffffff'}}
                 >
                   Apply Now
                 </Button>
@@ -241,7 +243,8 @@ export default function AboutPage() {
                 <Button
                   size="xl"
                   variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-primary-600"
+                  className="hover:bg-blue-800"
+                  style={{backgroundColor: '#1e40af', color: '#ffffff', borderColor: '#1e40af'}}
                 >
                   Contact Us
                 </Button>

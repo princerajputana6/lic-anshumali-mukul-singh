@@ -191,10 +191,10 @@ export default function BlogAdminPage() {
     <div className="min-h-screen bg-neutral-50 py-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="font-heading text-3xl font-bold text-neutral-900 mb-2">
+          <h1 className="font-heading text-3xl font-bold mb-2" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
             Blog Management
           </h1>
-          <p className="text-neutral-600">
+          <p className="font-semibold" style={{color: '#000000'}}>
             Create, edit, and manage your blog posts
           </p>
         </div>
@@ -328,6 +328,8 @@ export default function BlogAdminPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => setIsEditing(true)}
+                    className="hover:bg-blue-800"
+                    style={{backgroundColor: '#1e40af', color: '#ffc908', borderColor: '#1e40af'}}
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     New Post
@@ -344,7 +346,7 @@ export default function BlogAdminPage() {
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <div className="flex items-center space-x-2 mb-2">
-                            <h3 className="font-semibold text-neutral-900">
+                            <h3 className="font-semibold" style={{color: '#1e40af'}}>
                               {blog.title}
                             </h3>
                             <span className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
@@ -356,11 +358,11 @@ export default function BlogAdminPage() {
                             </span>
                           </div>
                           
-                          <p className="text-neutral-600 text-sm mb-2 line-clamp-2">
+                          <p className="text-sm mb-2 line-clamp-2 font-semibold" style={{color: '#000000'}}>
                             {blog.excerpt}
                           </p>
                           
-                          <div className="flex items-center space-x-4 text-xs text-neutral-500">
+                          <div className="flex items-center space-x-4 text-xs font-semibold" style={{color: '#000000'}}>
                             <span>By {blog.author}</span>
                             <span>{blog.category}</span>
                             <span>{blog.views} views</span>
@@ -374,7 +376,7 @@ export default function BlogAdminPage() {
                             {blog.tags.map((tag) => (
                               <span
                                 key={tag}
-                                className="inline-flex items-center rounded-md bg-neutral-100 px-2 py-1 text-xs text-neutral-600"
+                                className="inline-flex items-center rounded-md bg-neutral-100 px-2 py-1 text-xs font-semibold" style={{color: '#000000'}}
                               >
                                 #{tag}
                               </span>
@@ -412,8 +414,12 @@ export default function BlogAdminPage() {
                   
                   {blogs.length === 0 && (
                     <div className="text-center py-12">
-                      <p className="text-neutral-500 mb-4">No blog posts yet</p>
-                      <Button onClick={() => setIsEditing(true)}>
+                      <p className="mb-4 font-semibold" style={{color: '#000000'}}>No blog posts yet</p>
+                      <Button 
+                        onClick={() => setIsEditing(true)}
+                        className="hover:bg-blue-800"
+                        style={{backgroundColor: '#1e40af', color: '#ffc908'}}
+                      >
                         <Plus className="h-4 w-4 mr-2" />
                         Create Your First Post
                       </Button>

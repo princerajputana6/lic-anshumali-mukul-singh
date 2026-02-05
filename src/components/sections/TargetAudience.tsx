@@ -76,10 +76,10 @@ export function TargetAudience() {
     <section id="target-audience" className="py-20 sm:py-32 bg-gradient-to-b from-neutral-50 to-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#000000', textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
+          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
             Who Can Become an LIC Agent?
           </h2>
-          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#000000', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
             LIC agent career is perfect for people from all walks of life. Whether you're looking for 
             a full-time career or part-time income, we have opportunities for everyone.
           </p>
@@ -99,24 +99,24 @@ export function TargetAudience() {
                 <CardContent className="p-8 relative">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-100 group-hover:bg-primary-500 transition-colors duration-300">
-                      <IconComponent className="h-7 w-7 text-primary-600 group-hover:text-white transition-colors duration-300" />
+                      <IconComponent className="h-7 w-7 group-hover:text-white transition-colors duration-300" style={{color: '#1e40af'}} />
                     </div>
-                    <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium text-accent-800">
+                    <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium" style={{color: '#1e40af'}}>
                       {group.highlight}
                     </span>
                   </div>
                   
-                  <h3 className="font-heading text-xl font-black mb-3" style={{color: '#000000', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+                  <h3 className="font-heading text-xl font-black mb-3" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                     {group.title}
                   </h3>
                   
-                  <p className="font-bold leading-relaxed mb-6" style={{color: '#000000', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+                  <p className="font-bold leading-relaxed mb-6" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                     {group.description}
                   </p>
 
                   <div className="space-y-2">
                     {group.benefits.map((benefit, benefitIndex) => (
-                      <div key={benefitIndex} className="flex items-center text-sm font-bold" style={{color: '#000000', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+                      <div key={benefitIndex} className="flex items-center text-sm font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                         <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 flex-shrink-0"></div>
                         {benefit}
                       </div>
@@ -142,7 +142,7 @@ export function TargetAudience() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">RS</span>
+                <span className="font-bold text-lg" style={{color: '#1e40af'}}>RS</span>
               </div>
               <h4 className="font-semibold text-neutral-900 mb-2">Rajesh Sharma</h4>
               <p className="text-sm text-neutral-600 mb-3">Former IT Professional, Mumbai</p>
@@ -172,7 +172,7 @@ export function TargetAudience() {
 
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-accent-400 to-accent-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-neutral-900 font-bold text-lg">AM</span>
+                <span className="font-bold text-lg" style={{color: '#1e40af'}}>AM</span>
               </div>
               <h4 className="font-semibold text-neutral-900 mb-2">Amit Mehta</h4>
               <p className="text-sm text-neutral-600 mb-3">Recent Graduate, Pune</p>
@@ -188,7 +188,7 @@ export function TargetAudience() {
 
           <div className="text-center mt-12">
             <div className="inline-flex items-center space-x-2 text-primary-600 font-medium">
-              <span>Join thousands of successful agents</span>
+              <span style={{color: '#1e40af'}}>Join thousands of successful agents</span>
               <ArrowRight className="h-4 w-4" />
             </div>
           </div>

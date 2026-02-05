@@ -81,10 +81,10 @@ export function HowItWorks() {
     <section id="how-it-works" className="py-20 sm:py-32 bg-neutral-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-black tracking-tight text-black sm:text-4xl">
+          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
             How to Become an LIC Agent
           </h2>
-          <p className="mt-4 text-lg leading-8 text-black font-semibold">
+          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
             Follow our simple 5-step process to start your rewarding career as an LIC insurance advisor. 
             We'll guide you through every step of the journey.
           </p>
@@ -119,7 +119,7 @@ export function HowItWorks() {
                             <h3 className="font-heading text-lg font-semibold text-neutral-900">
                               {step.title}
                             </h3>
-                            <span className="inline-flex items-center rounded-full bg-accent-100 px-2 py-1 text-xs font-medium text-accent-800 mt-2">
+                            <span className="inline-flex items-center rounded-full bg-accent-100 px-2 py-1 text-xs font-medium mt-2" style={{color: '#1e40af'}}>
                               {step.timeframe}
                             </span>
                           </div>
@@ -173,7 +173,7 @@ export function HowItWorks() {
                             <h3 className="font-heading text-lg font-semibold text-neutral-900">
                               {step.title}
                             </h3>
-                            <span className="inline-flex items-center rounded-full bg-accent-100 px-2 py-1 text-xs font-medium text-accent-800">
+                            <span className="inline-flex items-center rounded-full bg-accent-100 px-2 py-1 text-xs font-medium" style={{color: '#1e40af'}}>
                               {step.timeframe}
                             </span>
                           </div>
@@ -203,7 +203,7 @@ export function HowItWorks() {
         {/* Call to Action */}
         <div className="mt-20 text-center">
           <div className="inline-flex items-center space-x-2 text-primary-600 font-medium mb-4">
-            <span>Ready to get started?</span>
+            <span style={{color: '#1e40af'}}>Ready to get started?</span>
             <ArrowRight className="h-4 w-4" />
           </div>
           <p className="text-neutral-600 max-w-2xl mx-auto">

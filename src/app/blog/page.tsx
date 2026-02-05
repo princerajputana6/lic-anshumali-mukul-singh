@@ -89,10 +89,10 @@ export default async function BlogPage() {
         <section className="py-20 sm:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <h1 className="font-heading text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+              <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
                 LIC Career Blog
               </h1>
-              <p className="mt-6 text-lg leading-8 text-neutral-600">
+              <p className="mt-6 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                 Expert tips, success stories, and career guidance to help you build a successful 
                 insurance career. Learn from experienced agents and industry professionals.
               </p>
@@ -108,8 +108,9 @@ export default async function BlogPage() {
                 <Button
                   key={category}
                   variant={category === 'All' ? 'primary' : 'outline'}
-                  size="sm"
-                  className="rounded-full"
+                  size="lg"
+                  className="rounded-full hover:bg-blue-800 px-6 py-3"
+                  style={{backgroundColor: '#1e40af', color: '#ffffff', borderColor: '#1e40af'}}
                 >
                   {category}
                 </Button>
@@ -134,36 +135,36 @@ export default async function BlogPage() {
                   <CardContent className="p-6">
                     {/* Category Badge */}
                     <div className="mb-4">
-                      <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800">
+                      <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium" style={{color: '#1e40af'}}>
                         {blog.category}
                       </span>
                     </div>
                     
                     {/* Title */}
-                    <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
+                    <h3 className="font-heading text-xl font-semibold mb-3 group-hover:text-primary-600 transition-colors" style={{color: '#1e40af'}}>
                       <Link href={`/blog/${blog.slug}`}>
                         {blog.title}
                       </Link>
                     </h3>
                     
                     {/* Excerpt */}
-                    <p className="text-neutral-600 leading-relaxed mb-4 line-clamp-3">
+                    <p className="leading-relaxed mb-4 line-clamp-3 font-semibold" style={{color: '#000000'}}>
                       {blog.excerpt}
                     </p>
                     
                     {/* Meta Information */}
-                    <div className="flex items-center justify-between text-sm text-neutral-500 mb-4">
+                    <div className="flex items-center justify-between text-sm mb-4" style={{color: '#000000'}}>
                       <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">
-                          <Calendar className="h-4 w-4" />
+                          <Calendar className="h-4 w-4" style={{color: '#1e40af'}} />
                           <span>{new Date(blog.publishedAt).toLocaleDateString()}</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <Clock className="h-4 w-4" />
+                          <Clock className="h-4 w-4" style={{color: '#1e40af'}} />
                           <span>{blog.readTime} min read</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <Eye className="h-4 w-4" />
+                          <Eye className="h-4 w-4" style={{color: '#1e40af'}} />
                           <span>{blog.views}</span>
                         </div>
                       </div>
@@ -171,7 +172,7 @@ export default async function BlogPage() {
                     
                     {/* Author */}
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-neutral-600">By {blog.author}</span>
+                      <span className="text-sm font-semibold" style={{color: '#000000'}}>By {blog.author}</span>
                       <Link href={`/blog/${blog.slug}`}>
                         <Button variant="ghost" size="sm" className="group/btn">
                           Read More
@@ -186,7 +187,12 @@ export default async function BlogPage() {
             
             {/* Load More Button */}
             <div className="text-center mt-12">
-              <Button size="lg" variant="outline">
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="hover:bg-blue-800"
+                style={{backgroundColor: '#1e40af', color: '#ffc908', borderColor: '#1e40af'}}
+              >
                 Load More Articles
               </Button>
             </div>
@@ -194,12 +200,12 @@ export default async function BlogPage() {
         </section>
 
         {/* Newsletter Signup */}
-        <section className="py-20 bg-gradient-to-r from-primary-500 to-secondary-600">
+        <section className="py-20" style={{backgroundColor: '#ffc908'}}>
           <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-            <h2 className="font-heading text-3xl font-bold text-white mb-4">
+            <h2 className="font-heading text-3xl font-bold mb-4" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
               Stay Updated with Latest Tips
             </h2>
-            <p className="text-primary-100 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 max-w-2xl mx-auto font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
               Get the latest career tips, success stories, and industry insights delivered 
               straight to your inbox. Join thousands of successful LIC agents.
             </p>
@@ -207,9 +213,15 @@ export default async function BlogPage() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white focus:outline-none"
+                className="flex-1 px-4 py-3 rounded-lg border-2 focus:ring-2 focus:ring-blue-300 focus:outline-none font-semibold placeholder:text-blue-600"
+                style={{borderColor: '#1e40af', color: '#1e40af'}}
               />
-              <Button variant="accent" size="lg">
+              <Button 
+                variant="accent" 
+                size="lg"
+                className="hover:bg-blue-800"
+                style={{backgroundColor: '#1e40af', color: '#ffc908'}}
+              >
                 Subscribe
               </Button>
             </div>

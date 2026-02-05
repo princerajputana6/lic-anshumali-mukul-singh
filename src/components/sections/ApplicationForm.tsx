@@ -79,10 +79,10 @@ export function ApplicationForm() {
     <section id="application-form" className="py-20 sm:py-32 bg-gradient-to-b from-white to-neutral-50">
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl font-black tracking-tight text-black sm:text-4xl">
+          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
             Start Your LIC Career Journey
           </h2>
-          <p className="mt-4 text-lg leading-8 text-black font-semibold">
+          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
             Answer 5 quick questions to get your free study materials and begin your path to financial success
           </p>
         </div>
@@ -269,7 +269,7 @@ export function ApplicationForm() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           <div className="bg-white rounded-lg p-6 shadow-soft">
             <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <CheckCircle className="h-6 w-6 text-green-600" />
+              <CheckCircle className="h-6 w-6" style={{color: '#1e40af'}} />
             </div>
             <div className="font-medium text-neutral-900">100% Free</div>
             <div className="text-sm text-neutral-600 mt-1">No hidden charges or fees</div>
@@ -277,7 +277,7 @@ export function ApplicationForm() {
           
           <div className="bg-white rounded-lg p-6 shadow-soft">
             <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <CheckCircle className="h-6 w-6 text-blue-600" />
+              <CheckCircle className="h-6 w-6" style={{color: '#1e40af'}} />
             </div>
             <div className="font-medium text-neutral-900">Quick Response</div>
             <div className="text-sm text-neutral-600 mt-1">We'll contact you within 24 hours</div>
@@ -285,7 +285,7 @@ export function ApplicationForm() {
           
           <div className="bg-white rounded-lg p-6 shadow-soft">
             <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <CheckCircle className="h-6 w-6 text-primary-600" />
+              <CheckCircle className="h-6 w-6" style={{color: '#1e40af'}} />
             </div>
             <div className="font-medium text-neutral-900">No Obligation</div>
             <div className="text-sm text-neutral-600 mt-1">Learn first, decide later</div>

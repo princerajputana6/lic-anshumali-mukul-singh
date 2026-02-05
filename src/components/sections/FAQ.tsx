@@ -82,10 +82,10 @@ export function FAQ() {
     <section id="faq" className="py-20 sm:py-32 bg-neutral-50">
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl font-black tracking-tight text-black sm:text-4xl">
+          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-lg leading-8 text-black font-semibold">
+          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
             Get answers to the most common questions about becoming an LIC insurance advisor
           </p>
         </div>
@@ -101,14 +101,14 @@ export function FAQ() {
                   className="w-full text-left p-6 hover:bg-neutral-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset"
                 >
                   <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-lg text-neutral-900 pr-4">
+                    <h3 className="font-semibold text-lg pr-4" style={{color: '#1e40af'}}>
                       {faq.question}
                     </h3>
                     <div className="flex-shrink-0">
                       {isOpen ? (
-                        <ChevronUp className="h-5 w-5 text-primary-500" />
+                        <ChevronUp className="h-5 w-5" style={{color: '#1e40af'}} />
                       ) : (
-                        <ChevronDown className="h-5 w-5 text-neutral-500" />
+                        <ChevronDown className="h-5 w-5" style={{color: '#1e40af'}} />
                       )}
                     </div>
                   </div>
@@ -117,7 +117,7 @@ export function FAQ() {
                 {isOpen && (
                   <CardContent className="px-6 pb-6 pt-0">
                     <div className="border-t border-neutral-200 pt-4">
-                      <p className="text-black font-semibold leading-relaxed">
+                      <p className="font-semibold leading-relaxed" style={{color: '#1e40af'}}>
                         {faq.answer}
                       </p>
                     </div>
