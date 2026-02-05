@@ -203,12 +203,12 @@ export default function AboutPage() {
                         {member.name.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
-                    <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-2">
+                    <h3 className="font-heading text-xl font-semibold mb-2" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
                       {member.name}
                     </h3>
-                    <p className="text-primary-600 font-medium mb-2">{member.position}</p>
-                    <p className="text-sm text-neutral-500 mb-4">{member.experience} experience</p>
-                    <p className="text-neutral-600 leading-relaxed text-sm">
+                    <p className="font-medium mb-2" style={{color: '#1e40af'}}>{member.position}</p>
+                    <p className="text-sm mb-4 font-semibold" style={{color: '#1e40af'}}>{member.experience} experience</p>
+                    <p className="leading-relaxed text-sm font-semibold" style={{color: '#1e40af'}}>
                       {member.description}
                     </p>
                   </CardContent>
