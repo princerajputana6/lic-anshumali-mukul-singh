@@ -53,6 +53,7 @@ export default function BlogAdminPage() {
   const [uploadingImage, setUploadingImage] = useState(false)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [blogToDelete, setBlogToDelete] = useState<Blog | null>(null)
+  const [publishingBlogId, setPublishingBlogId] = useState<string | null>(null)
 
   const {
     register,
@@ -180,6 +181,7 @@ export default function BlogAdminPage() {
   }
 
   const handleTogglePublish = async (blog: Blog) => {
+    setPublishingBlogId(blog._id)
     try {
       const response = await fetch(`/api/blogs/${blog.slug}/publish`, {
         method: 'PATCH',
@@ -195,6 +197,8 @@ export default function BlogAdminPage() {
       }
     } catch (error) {
       toast.error('An error occurred')
+    } finally {
+      setPublishingBlogId(null)
     }
   }
 
@@ -649,19 +653,35 @@ export default function BlogAdminPage() {
                             <Button
                               size="sm"
                               onClick={() => handleTogglePublish(blog)}
+                              disabled={publishingBlogId === blog._id}
                               className="hover:bg-green-700"
-                              style={{backgroundColor: '#10b981', color: '#ffffff'}}
+                              style={{backgroundColor: publishingBlogId === blog._id ? '#9ca3af' : '#10b981', color: '#ffffff'}}
                             >
-                              Publish
+                              {publishingBlogId === blog._id ? (
+                                <>
+                                  <span className="animate-spin mr-2">⏳</span>
+                                  Publishing...
+                                </>
+                              ) : (
+                                'Publish'
+                              )}
                             </Button>
                           ) : (
                             <Button
                               size="sm"
                               onClick={() => handleTogglePublish(blog)}
+                              disabled={publishingBlogId === blog._id}
                               className="hover:bg-orange-700"
-                              style={{backgroundColor: '#f97316', color: '#ffffff'}}
+                              style={{backgroundColor: publishingBlogId === blog._id ? '#9ca3af' : '#f97316', color: '#ffffff'}}
                             >
-                              Unpublish
+                              {publishingBlogId === blog._id ? (
+                                <>
+                                  <span className="animate-spin mr-2">⏳</span>
+                                  Unpublishing...
+                                </>
+                              ) : (
+                                'Unpublish'
+                              )}
                             </Button>
                           )}
                           <Button
