@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large files and installers
+*.dmg
+*.pkg
+*.exe
+*.msi
+*.zip
+*.tar.gz
+*.rar
+src/assets/*.dmg
+src/assets/*.pkg
