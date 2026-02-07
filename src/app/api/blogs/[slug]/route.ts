@@ -11,7 +11,13 @@ export async function GET(
     await connectDB()
     
     const { slug } = await params
-    const blog = await Blog.findOne({ slug, published: true })
+    
+    // For admin, don't filter by published status
+    const { searchParams } = new URL(request.url)
+    const includeUnpublished = searchParams.get('admin') === 'true'
+    
+    const query = includeUnpublished ? { slug } : { slug, published: true }
+    const blog = await Blog.findOne(query)
     
     if (!blog) {
       return NextResponse.json(
@@ -20,12 +26,14 @@ export async function GET(
       )
     }
     
-    // Increment views
-    await Blog.findByIdAndUpdate(blog._id, { $inc: { views: 1 } })
+    // Only increment views for public requests
+    if (!includeUnpublished) {
+      await Blog.findByIdAndUpdate(blog._id, { $inc: { views: 1 } })
+    }
     
     return NextResponse.json({
       success: true,
-      data: blog
+      blog: blog
     })
     
   } catch (error) {

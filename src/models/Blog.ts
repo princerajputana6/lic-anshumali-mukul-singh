@@ -93,8 +93,9 @@ BlogSchema.index({ category: 1 })
 BlogSchema.index({ tags: 1 })
 
 // Pre-save middleware to generate slug and calculate read time
-BlogSchema.pre('save', function(this: IBlog, next: any) {
-  if (this.isModified('title') && !this.slug) {
+BlogSchema.pre('save', function(this: IBlog) {
+  // Always generate slug from title if slug is not set
+  if (!this.slug || this.isModified('title')) {
     this.slug = this.title
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
@@ -110,8 +111,6 @@ BlogSchema.pre('save', function(this: IBlog, next: any) {
   if (this.isModified('published') && this.published && !this.publishedAt) {
     this.publishedAt = new Date()
   }
-  
-  next()
 })
 
 // Static methods
@@ -133,6 +132,11 @@ BlogSchema.methods.incrementViews = function(this: IBlog) {
   return this.save()
 }
 
-const Blog: Model<IBlog> = mongoose.models.Blog || mongoose.model<IBlog>('Blog', BlogSchema)
+// Clear the model from cache if it exists to ensure schema updates are applied
+if (mongoose.models.Blog) {
+  delete mongoose.models.Blog
+}
+
+const Blog: Model<IBlog> = mongoose.model<IBlog>('Blog', BlogSchema)
 
 export default Blog

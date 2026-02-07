@@ -16,8 +16,13 @@ export async function GET(request: NextRequest) {
     
     const skip = (page - 1) * limit
     
-    // Build query
-    let query: any = { published: true }
+    // Build query - filter by published status if specified
+    const publishedParam = searchParams.get('published')
+    let query: any = {}
+    
+    if (publishedParam === 'true') {
+      query.published = true
+    }
     
     if (category) {
       query.category = category
@@ -46,16 +51,14 @@ export async function GET(request: NextRequest) {
     
     return NextResponse.json({
       success: true,
-      data: {
-        blogs,
-        pagination: {
-          page,
-          limit,
-          total,
-          totalPages,
-          hasNext: page < totalPages,
-          hasPrev: page > 1
-        }
+      blogs,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNext: page < totalPages,
+        hasPrev: page > 1
       }
     })
     
@@ -83,9 +86,16 @@ export async function POST(request: NextRequest) {
       )
     }
     
+    // Generate slug from title
+    const slug = body.title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '')
+    
     // Create blog
     const blog = new Blog({
       title: body.title,
+      slug: slug,
       content: body.content,
       excerpt: body.excerpt,
       author: body.author || 'LIC Career Team',
@@ -113,8 +123,17 @@ export async function POST(request: NextRequest) {
       )
     }
     
+    // Return detailed error for debugging
     return NextResponse.json(
-      { success: false, message: 'Failed to create blog' },
+      { 
+        success: false, 
+        message: 'Failed to create blog',
+        error: error.message,
+        details: error.errors ? Object.keys(error.errors).map(key => ({
+          field: key,
+          message: error.errors[key].message
+        })) : []
+      },
       { status: 500 }
     )
   }

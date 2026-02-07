@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { applicationFormSchema } from '@/lib/validations'
 import { Resend } from 'resend'
+import connectDB from '@/lib/mongodb'
+import ApplicationForm from '@/models/ApplicationForm'
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
@@ -10,6 +12,42 @@ export async function POST(request: NextRequest) {
     
     // Validate the form data
     const validatedData = applicationFormSchema.parse(body)
+    
+    // Only connect to MongoDB if MONGODB_URI is configured
+    let savedApplication = null
+    if (process.env.MONGODB_URI) {
+      try {
+        // Connect to MongoDB
+        await connectDB()
+        
+        // Get client IP and user agent for tracking
+        const clientIP = request.headers.get('x-forwarded-for') || 
+                        request.headers.get('x-real-ip') || 
+                        'unknown'
+        const userAgent = request.headers.get('user-agent') || 'unknown'
+        
+        // Save to MongoDB
+        const applicationFormData = new ApplicationForm({
+          fullName: validatedData.fullName,
+          email: validatedData.email,
+          mobile: validatedData.mobile,
+          city: validatedData.city,
+          occupation: validatedData.occupation,
+          education: validatedData.education,
+          salesExperience: validatedData.salesExperience === 'yes',
+          reason: validatedData.reason
+        })
+        
+        // Save to database
+        savedApplication = await applicationFormData.save()
+        console.log('Application saved to MongoDB:', savedApplication._id)
+      } catch (dbError) {
+        console.error('MongoDB error (continuing without saving):', dbError)
+        // Continue with email sending even if DB save fails
+      }
+    } else {
+      console.log('MongoDB not configured - skipping database save')
+    }
     
     // Create email content for admin
     const adminEmailHtml = `
@@ -121,7 +159,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Application submitted successfully' 
+        message: 'Application submitted successfully',
+        applicationId: savedApplication?._id || null
       },
       { status: 200 }
     )
@@ -137,6 +176,17 @@ export async function POST(request: NextRequest) {
           errors: error
         },
         { status: 400 }
+      )
+    }
+
+    // Handle duplicate email error
+    if (error instanceof Error && error.message.includes('E11000')) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: 'An application with this email already exists. Please contact us if you need to update your information.' 
+        },
+        { status: 409 }
       )
     }
 

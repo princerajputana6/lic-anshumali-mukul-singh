@@ -14,55 +14,28 @@ export const metadata: Metadata = {
   },
 }
 
-// This would typically fetch from your API
+// Fetch blogs from API
 async function getBlogs() {
-  // For now, return mock data - replace with actual API call
-  return {
-    blogs: [
-      {
-        _id: '1',
-        title: '10 Essential Tips for New LIC Insurance Advisors',
-        slug: '10-essential-tips-new-lic-advisors',
-        excerpt: 'Starting your career as an LIC insurance advisor? Here are the top 10 tips that will help you succeed from day one and build a thriving practice.',
-        author: 'Rajesh Kumar',
-        category: 'Career Guidance',
-        tags: ['tips', 'beginners', 'success'],
-        featuredImage: '/images/blog/tips-advisors.jpg',
-        publishedAt: '2024-01-15T10:00:00Z',
-        readTime: 8,
-        views: 245
-      },
-      {
-        _id: '2',
-        title: 'Success Story: From Homemaker to Top LIC Agent',
-        slug: 'homemaker-to-top-lic-agent-success-story',
-        excerpt: 'Meet Priya Sharma, who transformed her life by becoming an LIC agent. Learn how she built a successful career while managing her family responsibilities.',
-        author: 'LIC Career Team',
-        category: 'Success Stories',
-        tags: ['success-story', 'homemaker', 'inspiration'],
-        featuredImage: '/images/blog/success-story.jpg',
-        publishedAt: '2024-01-10T14:30:00Z',
-        readTime: 6,
-        views: 189
-      },
-      {
-        _id: '3',
-        title: 'Understanding LIC Commission Structure: A Complete Guide',
-        slug: 'lic-commission-structure-complete-guide',
-        excerpt: 'Confused about LIC commission rates? This comprehensive guide explains everything you need to know about earning potential as an LIC insurance advisor.',
-        author: 'Amit Patel',
-        category: 'Training',
-        tags: ['commission', 'earnings', 'guide'],
-        featuredImage: '/images/blog/commission-guide.jpg',
-        publishedAt: '2024-01-05T09:15:00Z',
-        readTime: 12,
-        views: 567
-      }
-    ],
-    pagination: {
-      page: 1,
-      totalPages: 1,
-      total: 3
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    const response = await fetch(`${baseUrl}/api/blogs?published=true`, {
+      cache: 'no-store' // Always fetch fresh data
+    })
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch blogs')
+    }
+    
+    const data = await response.json()
+    return {
+      blogs: data.data?.blogs || data.blogs || [],
+      pagination: data.data?.pagination || { page: 1, totalPages: 1, total: 0 }
+    }
+  } catch (error) {
+    console.error('Error fetching blogs:', error)
+    return {
+      blogs: [],
+      pagination: { page: 1, totalPages: 1, total: 0 }
     }
   }
 }
@@ -76,6 +49,20 @@ const categories = [
   'Industry News',
   'Sales Techniques'
 ]
+
+interface Blog {
+  _id: string
+  title: string
+  slug: string
+  excerpt: string
+  author: string
+  category: string
+  tags: string[]
+  featuredImage?: string
+  publishedAt?: string
+  readTime: number
+  views: number
+}
 
 export default async function BlogPage() {
   const { blogs } = await getBlogs()
@@ -123,13 +110,21 @@ export default async function BlogPage() {
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogs.map((blog) => (
+              {blogs.map((blog: Blog) => (
                 <Card key={blog._id} className="group hover:shadow-strong transition-all duration-300 hover:-translate-y-1 border-0 shadow-medium overflow-hidden">
                   {/* Featured Image */}
                   <div className="aspect-w-16 aspect-h-9 bg-neutral-200 overflow-hidden">
-                    <div className="w-full h-48 bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
-                      <span className="text-neutral-500 text-sm">Featured Image</span>
-                    </div>
+                    {blog.featuredImage ? (
+                      <img 
+                        src={blog.featuredImage} 
+                        alt={blog.title}
+                        className="w-full h-48 object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-48 bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
+                        <span className="text-neutral-500 text-sm">No Image</span>
+                      </div>
+                    )}
                   </div>
                   
                   <CardContent className="p-6">
@@ -157,7 +152,7 @@ export default async function BlogPage() {
                       <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">
                           <Calendar className="h-4 w-4" style={{color: '#1e40af'}} />
-                          <span>{new Date(blog.publishedAt).toLocaleDateString()}</span>
+                          <span>{blog.publishedAt ? new Date(blog.publishedAt).toLocaleDateString() : 'N/A'}</span>
                         </div>
                         <div className="flex items-center space-x-1">
                           <Clock className="h-4 w-4" style={{color: '#1e40af'}} />
