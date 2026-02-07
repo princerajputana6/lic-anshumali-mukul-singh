@@ -28,8 +28,8 @@ async function getBlogs() {
     
     const data = await response.json()
     return {
-      blogs: data.data?.blogs || data.blogs || [],
-      pagination: data.data?.pagination || { page: 1, totalPages: 1, total: 0 }
+      blogs: data.blogs || [],
+      pagination: data.pagination || { page: 1, totalPages: 1, total: 0 }
     }
   } catch (error) {
     console.error('Error fetching blogs:', error)
