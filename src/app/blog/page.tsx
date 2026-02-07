@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { Card, CardContent, Button } from '@/components/ui'
+import { Card, CardContent } from '@/components/ui'
 import { Calendar, Clock, Eye, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
@@ -78,168 +78,162 @@ export default async function BlogPage() {
   const { blogs } = await getBlogs()
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-neutral-50">
       <Header />
       
       <main>
         {/* Hero Section */}
-        <section className="py-20 sm:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section className="py-12 sm:py-20" style={{background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)'}}>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
                 LIC Career Blog
               </h1>
-              <p className="mt-6 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg leading-relaxed text-blue-100">
                 Expert tips, success stories, and career guidance to help you build a successful 
-                insurance career. Learn from experienced agents and industry professionals.
+                insurance career.
               </p>
             </div>
           </div>
         </section>
 
         {/* Categories Filter */}
-        <section className="py-12 bg-white border-b border-neutral-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="flex flex-wrap justify-center gap-4">
+        <section className="py-4 sm:py-6 bg-white border-b border-neutral-200 sticky top-0 z-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex overflow-x-auto gap-2 sm:gap-3 pb-1 sm:pb-0 sm:flex-wrap sm:justify-center scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
               {categories.map((category) => (
-                <Button
+                <button
                   key={category}
-                  variant={category === 'All' ? 'primary' : 'outline'}
-                  size="lg"
-                  className="rounded-full hover:bg-blue-800 px-6 py-3"
-                  style={{backgroundColor: '#1e40af', color: '#ffffff', borderColor: '#1e40af'}}
+                  className={`flex-shrink-0 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${
+                    category === 'All'
+                      ? 'text-white shadow-md'
+                      : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+                  }`}
+                  style={category === 'All' ? {backgroundColor: '#1e40af'} : {}}
                 >
                   {category}
-                </Button>
+                </button>
               ))}
             </div>
           </div>
         </section>
 
         {/* Blog Grid */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section className="py-8 sm:py-12 lg:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {blogs.map((blog: Blog) => (
-                <Card key={blog._id} className="group hover:shadow-strong transition-all duration-300 hover:-translate-y-1 border-0 shadow-medium overflow-hidden">
-                  {/* Featured Image */}
-                  <div className="aspect-w-16 aspect-h-9 bg-neutral-200 overflow-hidden">
-                    {blog.featuredImage ? (
-                      <img 
-                        src={blog.featuredImage} 
-                        alt={blog.title}
-                        className="w-full h-48 object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-48 bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
-                        <span className="text-neutral-500 text-sm">No Image</span>
+                <Link key={blog._id} href={`/blog/${blog.slug}`} className="group">
+                  <Card className="h-full border border-neutral-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden bg-white">
+                    {/* Featured Image */}
+                    <div className="relative overflow-hidden">
+                      {blog.featuredImage ? (
+                        <img 
+                          src={blog.featuredImage} 
+                          alt={blog.title}
+                          className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-40 sm:h-48 flex items-center justify-center" style={{background: 'linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%)'}}>
+                          <span className="text-blue-400 text-sm font-medium">No Image</span>
+                        </div>
+                      )}
+                      {/* Category badge on image */}
+                      <div className="absolute top-3 left-3">
+                        <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold text-white shadow-sm" style={{backgroundColor: '#1e40af'}}>
+                          {blog.category}
+                        </span>
                       </div>
-                    )}
-                  </div>
-                  
-                  <CardContent className="p-6">
-                    {/* Category Badge */}
-                    <div className="mb-4">
-                      <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium" style={{color: '#1e40af'}}>
-                        {blog.category}
-                      </span>
                     </div>
                     
-                    {/* Title */}
-                    <h3 className="font-heading text-xl font-semibold mb-3 group-hover:text-primary-600 transition-colors" style={{color: '#1e40af'}}>
-                      <Link href={`/blog/${blog.slug}`}>
+                    <CardContent className="p-4 sm:p-5">
+                      {/* Title */}
+                      <h3 className="font-heading text-base sm:text-lg font-bold text-neutral-900 mb-2 line-clamp-2 group-hover:text-blue-700 transition-colors leading-snug">
                         {blog.title}
-                      </Link>
-                    </h3>
-                    
-                    {/* Excerpt */}
-                    <p className="leading-relaxed mb-4 line-clamp-3 font-semibold" style={{color: '#000000'}}>
-                      {blog.excerpt}
-                    </p>
-                    
-                    {/* Meta Information */}
-                    <div className="flex items-center justify-between text-sm mb-4" style={{color: '#000000'}}>
-                      <div className="flex items-center space-x-4">
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="h-4 w-4" style={{color: '#1e40af'}} />
+                      </h3>
+                      
+                      {/* Excerpt */}
+                      <p className="text-sm text-neutral-600 mb-3 line-clamp-2 leading-relaxed">
+                        {blog.excerpt}
+                      </p>
+                      
+                      {/* Meta Information */}
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-400 mb-3">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="h-3.5 w-3.5" />
                           <span>{blog.publishedAt ? new Date(blog.publishedAt).toLocaleDateString() : 'N/A'}</span>
                         </div>
-                        <div className="flex items-center space-x-1">
-                          <Clock className="h-4 w-4" style={{color: '#1e40af'}} />
-                          <span>{blog.readTime} min read</span>
+                        <div className="flex items-center gap-1">
+                          <Clock className="h-3.5 w-3.5" />
+                          <span>{blog.readTime} min</span>
                         </div>
-                        <div className="flex items-center space-x-1">
-                          <Eye className="h-4 w-4" style={{color: '#1e40af'}} />
+                        <div className="flex items-center gap-1">
+                          <Eye className="h-3.5 w-3.5" />
                           <span>{blog.views}</span>
                         </div>
                       </div>
-                    </div>
-                    
-                    {/* Author */}
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold" style={{color: '#000000'}}>By {blog.author}</span>
-                      <Link href={`/blog/${blog.slug}`}>
-                        <Button variant="ghost" size="sm" className="group/btn">
+                      
+                      {/* Author + Read More */}
+                      <div className="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <span className="text-xs font-semibold text-neutral-500">By {blog.author}</span>
+                        <span className="flex items-center text-xs font-semibold gap-1 group-hover:gap-2 transition-all" style={{color: '#1e40af'}}>
                           Read More
-                          <ArrowRight className="ml-1 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
             
             {/* No Blogs Message */}
             {blogs.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-xl font-bold" style={{color: '#1e40af'}}>
-                  No blog posts available yet. Check back soon!
-                </p>
+              <div className="text-center py-16 sm:py-24">
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4" style={{backgroundColor: '#1e40af'}}>
+                  <Eye className="h-7 w-7 text-white" />
+                </div>
+                <p className="text-lg font-bold text-neutral-900 mb-1">No blog posts yet</p>
+                <p className="text-sm text-neutral-500">Check back soon for new content!</p>
               </div>
             )}
             
-            {/* Load More Button - Only show if there are blogs */}
+            {/* Load More Button */}
             {blogs.length > 0 && (
-              <div className="text-center mt-12">
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="hover:bg-blue-800"
-                  style={{backgroundColor: '#1e40af', color: '#ffc908', borderColor: '#1e40af'}}
+              <div className="text-center mt-8 sm:mt-12">
+                <button 
+                  className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
+                  style={{backgroundColor: '#1e40af'}}
                 >
                   Load More Articles
-                </Button>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
               </div>
             )}
           </div>
         </section>
 
         {/* Newsletter Signup */}
-        <section className="py-20" style={{backgroundColor: '#ffc908'}}>
-          <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-            <h2 className="font-heading text-3xl font-bold mb-4" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
+        <section className="py-12 sm:py-16" style={{background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)'}}>
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-3">
               Stay Updated with Latest Tips
             </h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
-              Get the latest career tips, success stories, and industry insights delivered 
-              straight to your inbox. Join thousands of successful LIC agents.
+            <p className="text-sm sm:text-base text-blue-100 mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed">
+              Get career tips, success stories, and industry insights delivered to your inbox.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg border-2 focus:ring-2 focus:ring-blue-300 focus:outline-none font-semibold placeholder:text-blue-600"
-                style={{borderColor: '#1e40af', color: '#1e40af'}}
+                className="flex-1 px-4 py-3 rounded-xl border-2 border-white/30 bg-white/10 text-white placeholder:text-blue-200 focus:ring-2 focus:ring-white/50 focus:outline-none focus:bg-white/20 text-sm sm:text-base transition-colors"
               />
-              <Button 
-                variant="accent" 
-                size="lg"
-                className="hover:bg-blue-800"
-                style={{backgroundColor: '#1e40af', color: '#ffc908'}}
+              <button 
+                className="px-6 py-3 rounded-xl font-semibold text-sm sm:text-base shadow-md hover:shadow-lg transition-all duration-200"
+                style={{backgroundColor: '#ffc908', color: '#1e40af'}}
               >
                 Subscribe
-              </Button>
+              </button>
             </div>
           </div>
         </section>

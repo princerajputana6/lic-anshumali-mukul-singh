@@ -73,7 +73,7 @@ const targetGroups = [
 
 export function TargetAudience() {
   return (
-    <section id="target-audience" className="py-20 sm:py-32 bg-gradient-to-b from-neutral-50 to-white">
+    <section id="target-audience" className=" sm:py-32 bg-gradient-to-b from-neutral-50 to-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
@@ -97,11 +97,11 @@ export function TargetAudience() {
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-100 to-primary-200 rounded-bl-full opacity-50"></div>
                 
                 <CardContent className="p-8 relative">
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center mb-6">
                     <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-100 group-hover:bg-primary-500 transition-colors duration-300">
                       <IconComponent className="h-7 w-7 group-hover:text-white transition-colors duration-300" style={{color: '#1e40af'}} />
                     </div>
-                    <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium" style={{color: '#1e40af'}}>
+                    <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text font-medium" style={{color: '#1e40af'}}>
                       {group.highlight}
                     </span>
                   </div>
@@ -157,7 +157,7 @@ export function TargetAudience() {
 
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-secondary-400 to-secondary-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">PK</span>
+                <span className="text-white font-bold text-lg"style={{color: '#1e40af'}}>PK</span>
               </div>
               <h4 className="font-semibold text-neutral-900 mb-2">Priya Kumari</h4>
               <p className="text-sm text-neutral-600 mb-3">Homemaker, Delhi</p>
@@ -195,26 +195,26 @@ export function TargetAudience() {
         </div>
 
         {/* Requirements */}
-        <div className="mt-16 text-center">
+        <div className="mt-10 text-center">
           <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-8">
             Basic Requirements
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg p-6 shadow-soft">
-              <div className="text-2xl font-bold text-primary-500 mb-2">18+</div>
-              <div className="text-sm text-neutral-600">Minimum Age</div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md border border-neutral-200">
+              <div className="text-xl sm:text-2xl font-bold mb-2" style={{color: '#1e40af'}}>18+</div>
+              <div className="text-xs sm:text-sm text-neutral-600">Minimum Age</div>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-soft">
-              <div className="text-2xl font-bold text-primary-500 mb-2">10th</div>
-              <div className="text-sm text-neutral-600">Education Required</div>
+            <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md border border-neutral-200">
+              <div className="text-xl sm:text-2xl font-bold mb-2" style={{color: '#1e40af'}}>10th</div>
+              <div className="text-xs sm:text-sm text-neutral-600">Education Required</div>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-soft">
-              <div className="text-2xl font-bold text-primary-500 mb-2">₹0</div>
-              <div className="text-sm text-neutral-600">Investment Needed</div>
+            <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md border border-neutral-200">
+              <div className="text-xl sm:text-2xl font-bold mb-2" style={{color: '#1e40af'}}>₹0</div>
+              <div className="text-xs sm:text-sm text-neutral-600">Investment Needed</div>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-soft">
-              <div className="text-2xl font-bold text-primary-500 mb-2">Any</div>
-              <div className="text-sm text-neutral-600">Background Welcome</div>
+            <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md border border-neutral-200">
+              <div className="text-xl sm:text-2xl font-bold mb-2" style={{color: '#1e40af'}}>Any</div>
+              <div className="text-xs sm:text-sm text-neutral-600">Background Welcome</div>
             </div>
           </div>
         </div>

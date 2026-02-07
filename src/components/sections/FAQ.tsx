@@ -130,19 +130,19 @@ export function FAQ() {
 
         {/* Still have questions section */}
         <div className="mt-16 text-center">
-          <Card className="bg-gradient-to-r from-primary-500 to-secondary-600 border-0 shadow-strong">
+          <Card className="border-0 shadow-strong overflow-hidden" style={{background: 'linear-gradient(to right, #1e40af, #3b82f6)'}}>
             <CardContent className="p-8 text-white">
               <h3 className="font-heading text-2xl font-bold mb-4">
                 Still Have Questions?
               </h3>
-              <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
+              <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
                 Our team is here to help you understand everything about becoming an LIC agent. 
                 Get personalized answers to your specific questions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="tel:+919876543210"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-neutral-100 transition-colors duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-[#ffc908] text-[#1e40af] font-semibold rounded-lg hover:bg-yellow-400 transition-colors duration-200 shadow-md"
                 >
                   📞 Call: +91 98765 43210
                 </a>
@@ -150,7 +150,7 @@ export function FAQ() {
                   href="https://wa.me/919876543210"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors duration-200 shadow-md"
                 >
                   💬 WhatsApp Chat
                 </a>

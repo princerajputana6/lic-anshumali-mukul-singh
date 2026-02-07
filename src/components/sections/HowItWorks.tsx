@@ -67,7 +67,7 @@ const steps = [
     title: 'Start Earning',
     description: 'Begin selling policies and earning commissions from your very first sale.',
     details: [
-      '25% first-year commission',
+      'Commission-based income',
       'Renewal income for life',
       'Performance bonuses',
       'Immediate payment processing'
@@ -77,138 +77,89 @@ const steps = [
 ]
 
 export function HowItWorks() {
+  const stepColors = [
+    'bg-blue-600',
+    'bg-violet-600',
+    'bg-amber-500',
+    'bg-emerald-600',
+    'bg-rose-600',
+  ]
+
   return (
-    <section id="how-it-works" className="py-20 sm:py-32 bg-neutral-50">
+    <section id="how-it-works" className="py-16 sm:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
+        <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
+          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af'}}>
             How to Become an LIC Agent
           </h2>
-          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
-            Follow our simple 5-step process to start your rewarding career as an LIC insurance advisor. 
-            We'll guide you through every step of the journey.
+          <p className="mt-4 text-base sm:text-lg leading-7 text-neutral-600">
+            Follow our simple 5-step process to start your rewarding career as an LIC insurance advisor.
           </p>
         </div>
 
-        <div className="mx-auto mt-16 max-w-6xl">
-          {/* Desktop Timeline */}
-          <div className="hidden lg:block">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-200 via-primary-400 to-primary-600 transform -translate-y-1/2"></div>
-              
-              <div className="relative grid grid-cols-5 gap-8">
-                {steps.map((step, index) => {
-                  const IconComponent = step.icon
-                  return (
-                    <div key={index} className="relative">
-                      {/* Step Circle */}
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 shadow-lg">
-                          <IconComponent className="h-8 w-8 text-white" />
-                        </div>
-                        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                          {step.step}
-                        </div>
-                      </div>
-                      
-                      {/* Step Card */}
-                      <Card className="mt-24 shadow-medium hover:shadow-strong transition-all duration-300">
-                        <CardContent className="p-6">
-                          <div className="text-center mb-4">
-                            <h3 className="font-heading text-lg font-semibold text-neutral-900">
-                              {step.title}
-                            </h3>
-                            <span className="inline-flex items-center rounded-full bg-accent-100 px-2 py-1 text-xs font-medium mt-2" style={{color: '#1e40af'}}>
-                              {step.timeframe}
-                            </span>
-                          </div>
-                          
-                          <p className="text-sm text-neutral-600 mb-4 text-center">
-                            {step.description}
-                          </p>
-                          
-                          <ul className="space-y-2">
-                            {step.details.map((detail, detailIndex) => (
-                              <li key={detailIndex} className="flex items-start text-xs text-neutral-600">
-                                <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mt-2 mr-2 flex-shrink-0"></div>
-                                {detail}
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Timeline */}
-          <div className="lg:hidden space-y-8">
-            {steps.map((step, index) => {
-              const IconComponent = step.icon
-              return (
-                <div key={index} className="relative">
-                  {/* Connection Line */}
-                  {index < steps.length - 1 && (
-                    <div className="absolute left-8 top-20 w-0.5 h-16 bg-primary-300"></div>
-                  )}
-                  
-                  <div className="flex items-start space-x-4">
-                    {/* Step Circle */}
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 shadow-lg flex-shrink-0 relative">
-                      <IconComponent className="h-8 w-8 text-white" />
-                      <div className="absolute -bottom-2 -right-2 bg-accent-500 text-neutral-900 text-xs font-bold px-2 py-1 rounded-full">
-                        {step.step}
-                      </div>
-                    </div>
-                    
-                    {/* Step Content */}
-                    <Card className="flex-1 shadow-medium">
-                      <CardContent className="p-6">
-                        <div className="mb-4">
-                          <div className="flex items-center justify-between mb-2">
-                            <h3 className="font-heading text-lg font-semibold text-neutral-900">
-                              {step.title}
-                            </h3>
-                            <span className="inline-flex items-center rounded-full bg-accent-100 px-2 py-1 text-xs font-medium" style={{color: '#1e40af'}}>
-                              {step.timeframe}
-                            </span>
-                          </div>
-                          
-                          <p className="text-sm text-neutral-600 mb-4">
-                            {step.description}
-                          </p>
-                          
-                          <ul className="space-y-2">
-                            {step.details.map((detail, detailIndex) => (
-                              <li key={detailIndex} className="flex items-start text-sm text-neutral-600">
-                                <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                {detail}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </CardContent>
-                    </Card>
+        {/* Steps Grid - works on both desktop and mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+          {steps.map((step, index) => {
+            const IconComponent = step.icon
+            return (
+              <div key={index} className="relative group">
+                {/* Connector arrow - desktop only */}
+                {index < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-10 -right-3 z-10">
+                    <ArrowRight className="h-5 w-5 text-neutral-300" />
                   </div>
-                </div>
-              )
-            })}
-          </div>
+                )}
+
+                <Card className="h-full border border-neutral-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                  {/* Colored top bar */}
+                  <div className={`h-1.5 ${stepColors[index]}`}></div>
+
+                  <CardContent className="p-5 sm:p-6">
+                    {/* Step number + Icon */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${stepColors[index]} shadow-md flex-shrink-0`}>
+                        <IconComponent className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-neutral-400 uppercase tracking-wider">Step {step.step}</div>
+                        <h3 className="font-heading text-base font-bold text-neutral-900 leading-tight">
+                          {step.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Timeframe badge */}
+                    <div className="mb-3">
+                      <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold text-white ${stepColors[index]}`}>
+                        {step.timeframe}
+                      </span>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-neutral-600 mb-4 leading-relaxed">
+                      {step.description}
+                    </p>
+                    
+                    {/* Details */}
+                    <ul className="space-y-1.5">
+                      {step.details.map((detail, detailIndex) => (
+                        <li key={detailIndex} className="flex items-start text-xs text-neutral-500">
+                          <div className={`w-1.5 h-1.5 ${stepColors[index]} rounded-full mt-1.5 mr-2 flex-shrink-0`}></div>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            )
+          })}
         </div>
 
         {/* Call to Action */}
-        <div className="mt-20 text-center">
-          <div className="inline-flex items-center space-x-2 text-primary-600 font-medium mb-4">
-            <span style={{color: '#1e40af'}}>Ready to get started?</span>
-            <ArrowRight className="h-4 w-4" />
-          </div>
-          <p className="text-neutral-600 max-w-2xl mx-auto">
-            The entire process takes just 2-3 weeks from application to earning your first commission. 
-            Join thousands of successful LIC agents who started their journey with us.
+        <div className="mt-12 sm:mt-16 text-center">
+          <p className="text-neutral-600 max-w-2xl mx-auto text-sm sm:text-base">
+            The entire process takes just <strong className="text-neutral-900">2-3 weeks</strong> from application to earning your first commission.
           </p>
         </div>
       </div>

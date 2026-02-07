@@ -8,7 +8,7 @@ const commissionTiers = [
     description: 'Earn 25% commission on the first year premium of every policy you sell',
     example: '₹1,00,000 premium = ₹25,000 commission',
     icon: TrendingUp,
-    color: 'bg-primary-500'
+    color: 'bg-violet-500'
   },
   {
     type: 'Bonus Commission',
@@ -16,11 +16,11 @@ const commissionTiers = [
     description: 'Additional 40% commission for achieving monthly targets and performance goals',
     example: 'Extra ₹40,000 on ₹1,00,000 premium',
     icon: Gift,
-    color: 'bg-accent-500'
+    color: 'bg-[#1e40af]'
   },
   {
     type: 'Renewal Income',
-    percentage: 5,
+    // percentage: 5,
     description: 'Passive income from policy renewals for the lifetime of the policy',
     example: '₹5,000 annually for life',
     icon: Repeat,
@@ -54,43 +54,38 @@ const earningExamples = [
 
 export function CommissionStructure() {
   return (
-    <section id="commission" className="py-20 sm:py-32 bg-white">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-black tracking-tight sm:text-4xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
+    <section id="commission" className="py-16 sm:py-24 bg-neutral-50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
+          <h2 className="font-heading text-2xl sm:text-3xl font-black tracking-tight lg:text-4xl" style={{color: '#1e40af'}}>
             Commission Structure
           </h2>
-          <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
-            Understand how you can earn with LIC's transparent and rewarding commission structure. 
-            The more you sell, the more you earn - with no upper limit.
+          <p className="mt-3 text-sm sm:text-base leading-7 text-neutral-600">
+            Transparent and rewarding. The more you sell, the more you earn — no upper limit.
           </p>
         </div>
 
         {/* Commission Types */}
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {commissionTiers.map((tier, index) => {
             const IconComponent = tier.icon
             return (
-              <Card key={index} className="group hover:shadow-strong transition-all duration-300 hover:-translate-y-1 border-0 shadow-medium">
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between">
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${tier.color}`}>
-                      <IconComponent className="h-6 w-6 text-white" />
+              <Card key={index} className="border border-neutral-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                <div className={`h-1.5 ${tier.color}`}></div>
+                <CardContent className="p-5 sm:p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${tier.color} shadow-md flex-shrink-0`}>
+                      <IconComponent className="h-5 w-5 text-white" />
                     </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-bold text-neutral-900">{tier.percentage}%</div>
-                      <div className="text-sm text-neutral-500">Commission</div>
-                    </div>
+                    <h3 className="font-heading text-base sm:text-lg font-bold text-neutral-900">{tier.type}</h3>
                   </div>
-                  <CardTitle className="text-xl">{tier.type}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-neutral-600 mb-4 leading-relaxed">
+                  <p className="text-sm text-neutral-600 mb-4 leading-relaxed">
                     {tier.description}
                   </p>
-                  <div className="bg-neutral-50 rounded-lg p-4">
-                    <div className="text-sm font-medium mb-1" style={{color: '#1e40af'}}>Example:</div>
-                    <div className="text-lg font-semibold" style={{color: '#1e40af'}}>{tier.example}</div>
+                  <div className="bg-neutral-50 border border-neutral-100 rounded-lg p-3 sm:p-4">
+                    <div className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1">Example</div>
+                    <div className="text-sm sm:text-base font-bold" style={{color: '#1e40af'}}>{tier.example}</div>
                   </div>
                 </CardContent>
               </Card>
@@ -98,68 +93,78 @@ export function CommissionStructure() {
           })}
         </div>
 
-        {/* Earning Calculator */}
-        <div className="mt-20">
-          <Card className="shadow-strong border-0">
-            <CardHeader className="text-center">
-              <div className="flex justify-center mb-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-r from-primary-500 to-secondary-600">
-                  <Calculator className="h-8 w-8 text-white" />
+        {/* Earning Potential */}
+        <div className="mt-10 sm:mt-16">
+          <Card className="border border-neutral-200 shadow-sm overflow-hidden">
+            <div className="h-1.5 bg-gradient-to-r from-blue-600 via-violet-600 to-emerald-600"></div>
+            <CardContent className="p-5 sm:p-8">
+              {/* Section title */}
+              <div className="flex items-center gap-3 mb-6 sm:mb-8">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 shadow-md flex-shrink-0">
+                  <Calculator className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-neutral-900">Monthly Earning Potential</h3>
+                  <p className="text-xs sm:text-sm text-neutral-500">Based on number of policies sold monthly</p>
                 </div>
               </div>
-              <CardTitle className="text-2xl">Monthly Earning Potential</CardTitle>
-              <p className="text-neutral-600 mt-2">
-                See how much you can earn based on the number of policies you sell monthly
-              </p>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-neutral-200">
-                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>Policies/Month</th>
-                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>Avg Premium</th>
-                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>First Year</th>
-                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>Annual Renewal</th>
-                      <th className="text-left py-4 px-4 font-semibold" style={{color: '#000000'}}>Total Monthly</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {earningExamples.map((example, index) => (
-                      <tr key={index} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
-                        <td className="py-4 px-4">
-                          <div className="flex items-center">
-                            <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                              <span className="font-semibold text-sm" style={{color: '#1e40af'}}>{example.policies}</span>
-                            </div>
-                            <span style={{color: '#000000'}}>{example.policies} policies</span>
-                          </div>
-                        </td>
-                        <td className="py-4 px-4 font-medium" style={{color: '#000000'}}>₹{example.premium.toLocaleString()}</td>
-                        <td className="py-4 px-4 font-medium text-green-600">₹{example.firstYear.toLocaleString()}</td>
-                        <td className="py-4 px-4 font-medium text-blue-600">₹{example.renewal.toLocaleString()}</td>
-                        <td className="py-4 px-4">
-                          <div className="font-bold text-lg text-primary-600">₹{example.total.toLocaleString()}</div>
-                          <div className="text-xs font-semibold" style={{color: '#000000'}}>per month</div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+
+              {/* Earning cards - works on all screen sizes */}
+              <div className="space-y-4">
+                {earningExamples.map((example, index) => (
+                  <div key={index} className="border border-neutral-200 rounded-xl p-4 sm:p-5 hover:border-blue-200 hover:bg-blue-50/30 transition-colors">
+                    {/* Top row: policies count */}
+                    <div className="flex items-center justify-between mb-3 pb-3 border-b border-neutral-100">
+                      <div className="flex items-center gap-2">
+                        <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-white text-sm" style={{backgroundColor: '#1e40af'}}>
+                          {example.policies}
+                        </div>
+                        <div>
+                          <div className="font-semibold text-neutral-900 text-sm sm:text-base">{example.policies} Policies/Month</div>
+                          <div className="text-xs text-neutral-500">Avg ₹{example.premium.toLocaleString()} premium</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-lg sm:text-xl font-black" style={{color: '#1e40af'}}>₹{example.total.toLocaleString()}</div>
+                        <div className="text-xs font-medium text-neutral-500">total/month</div>
+                      </div>
+                    </div>
+                    {/* Bottom row: breakdown */}
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+                      <div>
+                        <div className="text-xs text-neutral-400 font-medium">Avg Premium</div>
+                        <div className="font-semibold text-neutral-900 text-sm">₹{example.premium.toLocaleString()}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-neutral-400 font-medium">First Year</div>
+                        <div className="font-semibold text-green-600 text-sm">₹{example.firstYear.toLocaleString()}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-neutral-400 font-medium">Annual Renewal</div>
+                        <div className="font-semibold text-blue-600 text-sm">₹{example.renewal.toLocaleString()}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-neutral-400 font-medium">Total Monthly</div>
+                        <div className="font-bold text-sm" style={{color: '#1e40af'}}>₹{example.total.toLocaleString()}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
               
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-6">
-                  <div className="text-2xl font-bold text-green-700">No Cap</div>
-                  <div className="text-green-600 text-sm mt-1">On your earnings</div>
+              {/* Highlights */}
+              <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4">
+                <div className="bg-green-50 border border-green-100 rounded-xl p-3 sm:p-5 text-center">
+                  <div className="text-lg sm:text-2xl font-bold text-green-700">No Cap</div>
+                  <div className="text-green-600 text-xs sm:text-sm mt-0.5">On earnings</div>
                 </div>
-                <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-6">
-                  <div className="text-2xl font-bold text-blue-700">Lifetime</div>
-                  <div className="text-blue-600 text-sm mt-1">Renewal income</div>
+                <div className="bg-blue-50 border border-blue-100 rounded-xl p-3 sm:p-5 text-center">
+                  <div className="text-lg sm:text-2xl font-bold text-blue-700">Lifetime</div>
+                  <div className="text-blue-600 text-xs sm:text-sm mt-0.5">Renewal income</div>
                 </div>
-                <div className="bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg p-6">
-                  <div className="text-2xl font-bold text-purple-700">Weekly</div>
-                  <div className="text-purple-600 text-sm mt-1">Payment cycle</div>
+                <div className="bg-purple-50 border border-purple-100 rounded-xl p-3 sm:p-5 text-center">
+                  <div className="text-lg sm:text-2xl font-bold text-purple-700">Weekly</div>
+                  <div className="text-purple-600 text-xs sm:text-sm mt-0.5">Payment cycle</div>
                 </div>
               </div>
             </CardContent>
@@ -167,41 +172,28 @@ export function CommissionStructure() {
         </div>
 
         {/* Additional Benefits */}
-        <div className="mt-16 bg-gradient-to-r from-neutral-50 to-neutral-100 rounded-2xl p-8">
-          <div className="text-center">
-            <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-4">
-              Additional Benefits & Incentives
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Gift className="h-6 w-6 text-white" />
+        <div className="mt-10 sm:mt-16">
+          <h3 className="font-heading text-lg sm:text-xl font-bold text-neutral-900 text-center mb-6 sm:mb-8">
+            Additional Benefits & Incentives
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[
+              { icon: Gift, label: 'Performance Bonus', desc: 'Extra rewards for top performers', color: 'bg-violet-600' },
+              { icon: TrendingUp, label: 'Foreign Trips', desc: 'International incentive tours', color: 'bg-blue-600' },
+              { icon: Calculator, label: 'Loan Benefits', desc: 'Concessional housing loans', color: 'bg-emerald-600' },
+              { icon: Repeat, label: 'Team Building', desc: 'Build and lead your own team', color: 'bg-rose-600' },
+            ].map((item, i) => {
+              const Icon = item.icon
+              return (
+                <div key={i} className="bg-white border border-neutral-200 rounded-xl p-4 sm:p-5 text-center hover:shadow-md transition-shadow">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  </div>
+                  <div className="font-semibold text-neutral-900 text-sm sm:text-base">{item.label}</div>
+                  <div className="text-xs sm:text-sm text-neutral-500 mt-1">{item.desc}</div>
                 </div>
-                <div className="font-medium text-neutral-900">Performance Bonus</div>
-                <div className="text-sm text-neutral-600 mt-1">Extra rewards for top performers</div>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <TrendingUp className="h-6 w-6" style={{color: '#1e40af'}} />
-                </div>
-                <div className="font-medium text-neutral-900">Foreign Trips</div>
-                <div className="text-sm text-neutral-600 mt-1">International incentive tours</div>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Calculator className="h-6 w-6 text-white" />
-                </div>
-                <div className="font-medium text-neutral-900">Loan Benefits</div>
-                <div className="text-sm text-neutral-600 mt-1">Concessional housing loans</div>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Repeat className="h-6 w-6 text-white" />
-                </div>
-                <div className="font-medium text-neutral-900">Team Building</div>
-                <div className="text-sm text-neutral-600 mt-1">Build and lead your own team</div>
-              </div>
-            </div>
+              )
+            })}
           </div>
         </div>
       </div>

@@ -23,22 +23,7 @@ export function Hero() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           {/* Trust Indicators */}
-          <div className="flex justify-center items-center space-x-8 mb-8 text-sm font-bold">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{backgroundColor: '#1e40af'}}>
-                <span className="text-white font-bold text-xs">LIC</span>
-              </div>
-              <span style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>Official Partner</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Users className="h-5 w-5" style={{color: '#1e40af'}} />
-              <span style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>10,000+ Active Agents</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Star className="h-5 w-5 fill-current" style={{color: '#1e40af'}} />
-              <span style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>4.8/5 Rating</span>
-            </div>
-          </div>
+       
 
           {/* Main Headline */}
           <h1 className="font-heading text-4xl font-black tracking-tight sm:text-6xl lg:text-7xl" style={{color: '#1e40af', textShadow: '2px 2px 4px rgba(255,255,255,0.5)'}}>
@@ -83,7 +68,7 @@ export function Hero() {
               variant="outline"
               size="xl"
               onClick={handleLearnMoreClick}
-              className="group font-bold hover:bg-blue-700 hover:text-white"
+              className="group font-bold hover:bg-white hover:text-white"
               style={{borderColor: '#1e40af', borderWidth: '2px', color: '#1e40af'}}
             >
               Learn More About Benefits
@@ -91,7 +76,7 @@ export function Hero() {
           </div>
 
           {/* Success Stats */}
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
+          {/* <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
               <div className="text-3xl font-black" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>₹50,000+</div>
               <div className="text-sm font-bold mt-1" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>Average Monthly Income</div>
@@ -104,7 +89,7 @@ export function Hero() {
               <div className="text-3xl font-black" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>100%</div>
               <div className="text-sm font-bold mt-1" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>Job Satisfaction Rate</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

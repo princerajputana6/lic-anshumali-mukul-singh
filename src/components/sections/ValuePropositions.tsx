@@ -61,7 +61,7 @@ export function ValuePropositions() {
           </p>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {valueProps.map((prop, index) => {
             const IconComponent = prop.icon
             return (
@@ -69,21 +69,21 @@ export function ValuePropositions() {
                 key={index} 
                 className="group hover:shadow-strong transition-all duration-300 hover:-translate-y-1 border-0 shadow-medium"
               >
-                <CardContent className="p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 group-hover:bg-primary-500 transition-colors duration-300">
-                      <IconComponent className="h-6 w-6 group-hover:text-white transition-colors duration-300" style={{color: '#1e40af'}} />
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex items-center  mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-300" style={{backgroundColor: '#1e40af'}}>
+                      <IconComponent className="h-6 w-6 text-white" />
                     </div>
-                    <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium" style={{color: '#1e40af'}}>
+                    <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-md font-medium" style={{color: '#1e40af'}}>
                       {prop.highlight}
                     </span>
                   </div>
                   
-                  <h3 className="font-heading text-xl font-black mb-3" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
+                  <h3 className="font-heading text-lg sm:text-xl font-black mb-2" style={{color: '#1e40af'}}>
                     {prop.title}
                   </h3>
                   
-                  <p className="font-bold leading-relaxed" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
+                  <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
                     {prop.description}
                   </p>
                 </CardContent>
