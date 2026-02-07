@@ -17,9 +17,15 @@ export const metadata: Metadata = {
 // Fetch blogs from API
 async function getBlogs() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    // Use absolute URL for production, relative for development
+    const isProduction = process.env.NODE_ENV === 'production'
+    const baseUrl = isProduction 
+      ? (process.env.NEXT_PUBLIC_SITE_URL || 'https://lic-anshumali-mukul-singh-zff5.vercel.app')
+      : 'http://localhost:3000'
+    
     const response = await fetch(`${baseUrl}/api/blogs?published=true`, {
-      cache: 'no-store' // Always fetch fresh data
+      cache: 'no-store', // Always fetch fresh data
+      next: { revalidate: 0 }
     })
     
     if (!response.ok) {
@@ -180,17 +186,28 @@ export default async function BlogPage() {
               ))}
             </div>
             
-            {/* Load More Button */}
-            <div className="text-center mt-12">
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="hover:bg-blue-800"
-                style={{backgroundColor: '#1e40af', color: '#ffc908', borderColor: '#1e40af'}}
-              >
-                Load More Articles
-              </Button>
-            </div>
+            {/* No Blogs Message */}
+            {blogs.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-xl font-bold" style={{color: '#1e40af'}}>
+                  No blog posts available yet. Check back soon!
+                </p>
+              </div>
+            )}
+            
+            {/* Load More Button - Only show if there are blogs */}
+            {blogs.length > 0 && (
+              <div className="text-center mt-12">
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="hover:bg-blue-800"
+                  style={{backgroundColor: '#1e40af', color: '#ffc908', borderColor: '#1e40af'}}
+                >
+                  Load More Articles
+                </Button>
+              </div>
+            )}
           </div>
         </section>
 
