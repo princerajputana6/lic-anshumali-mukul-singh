@@ -17,22 +17,26 @@ export const metadata: Metadata = {
 // Fetch blogs from API
 async function getBlogs() {
   try {
-    // Use absolute URL for production, relative for development
-    const isProduction = process.env.NODE_ENV === 'production'
-    const baseUrl = isProduction 
-      ? (process.env.NEXT_PUBLIC_SITE_URL || 'https://lic-anshumali-mukul-singh-zff5.vercel.app')
-      : 'http://localhost:3000'
+    // Always use the Vercel URL in production
+    const baseUrl = 'https://lic-anshumali-mukul-singh-zff5.vercel.app'
+    const apiUrl = `${baseUrl}/api/blogs?published=true`
     
-    const response = await fetch(`${baseUrl}/api/blogs?published=true`, {
-      cache: 'no-store', // Always fetch fresh data
+    const response = await fetch(apiUrl, {
+      cache: 'no-store',
       next: { revalidate: 0 }
     })
     
     if (!response.ok) {
-      throw new Error('Failed to fetch blogs')
+      console.error('API request failed:', response.status, response.statusText)
+      return {
+        blogs: [],
+        pagination: { page: 1, totalPages: 1, total: 0 }
+      }
     }
     
     const data = await response.json()
+    console.log('API Response:', JSON.stringify(data, null, 2))
+    
     return {
       blogs: data.blogs || [],
       pagination: data.pagination || { page: 1, totalPages: 1, total: 0 }

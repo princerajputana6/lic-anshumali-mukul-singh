@@ -24,27 +24,30 @@ interface BlogPost {
 // Fetch blog from API
 async function getBlog(slug: string, isPreview: boolean = false): Promise<BlogPost | null> {
   try {
-    // Use absolute URL for production, relative for development
-    const isProduction = process.env.NODE_ENV === 'production'
-    const baseUrl = isProduction 
-      ? (process.env.NEXT_PUBLIC_SITE_URL || 'https://lic-anshumali-mukul-singh-zff5.vercel.app')
-      : 'http://localhost:3000'
-    
+    // Always use the Vercel URL in production
+    const baseUrl = 'https://lic-anshumali-mukul-singh-zff5.vercel.app'
     const url = isPreview 
       ? `${baseUrl}/api/blogs/${slug}?admin=true`
       : `${baseUrl}/api/blogs/${slug}`
+    
+    console.log('Fetching blog from:', url)
     
     const response = await fetch(url, {
       cache: 'no-store',
       next: { revalidate: 0 }
     })
     
+    console.log('Blog API Response status:', response.status)
+    
     if (!response.ok) {
+      console.error('Blog fetch failed:', response.status, response.statusText)
       return null
     }
     
     const data = await response.json()
-    return data.blog || data.data?.blog || null
+    console.log('Blog data received:', JSON.stringify(data, null, 2))
+    
+    return data.blog || null
   } catch (error) {
     console.error('Error fetching blog:', error)
     return null
