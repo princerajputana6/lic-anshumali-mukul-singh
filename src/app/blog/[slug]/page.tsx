@@ -24,13 +24,19 @@ interface BlogPost {
 // Fetch blog from API
 async function getBlog(slug: string, isPreview: boolean = false): Promise<BlogPost | null> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    // Use absolute URL for production, relative for development
+    const isProduction = process.env.NODE_ENV === 'production'
+    const baseUrl = isProduction 
+      ? (process.env.NEXT_PUBLIC_SITE_URL || 'https://lic-anshumali-mukul-singh-zff5.vercel.app')
+      : 'http://localhost:3000'
+    
     const url = isPreview 
       ? `${baseUrl}/api/blogs/${slug}?admin=true`
       : `${baseUrl}/api/blogs/${slug}`
     
     const response = await fetch(url, {
-      cache: 'no-store'
+      cache: 'no-store',
+      next: { revalidate: 0 }
     })
     
     if (!response.ok) {
