@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
-import { Calculator, TrendingUp, Repeat, Gift } from 'lucide-react'
+import { Calculator, TrendingUp, Repeat, Gift, Award } from 'lucide-react'
 
 const commissionTiers = [
   {
@@ -57,17 +57,17 @@ export function CommissionStructure() {
     <section id="commission" className="py-16 sm:py-24 bg-neutral-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
+        {/* <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
           <h2 className="font-heading text-2xl sm:text-3xl font-black tracking-tight lg:text-4xl" style={{color: '#1e40af'}}>
             Commission Structure
           </h2>
           <p className="mt-3 text-sm sm:text-base leading-7 text-neutral-600">
             Transparent and rewarding. The more you sell, the more you earn — no upper limit.
           </p>
-        </div>
+        </div> */}
 
         {/* Commission Types */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {commissionTiers.map((tier, index) => {
             const IconComponent = tier.icon
             return (
@@ -91,7 +91,7 @@ export function CommissionStructure() {
               </Card>
             )
           })}
-        </div>
+        </div> */}
 
         {/* Earning Potential */}
         <div className="mt-10 sm:mt-16">
@@ -159,11 +159,11 @@ export function CommissionStructure() {
                   <div className="text-green-600 text-xs sm:text-sm mt-0.5">On earnings</div>
                 </div>
                 <div className="bg-blue-50 border border-blue-100 rounded-xl p-3 sm:p-5 text-center">
-                  <div className="text-lg sm:text-2xl font-bold text-blue-700">Lifetime</div>
+                  <div className="text-lg sm:text-2xl font-bold text-blue-700">Hereditary</div>
                   <div className="text-blue-600 text-xs sm:text-sm mt-0.5">Renewal income</div>
                 </div>
                 <div className="bg-purple-50 border border-purple-100 rounded-xl p-3 sm:p-5 text-center">
-                  <div className="text-lg sm:text-2xl font-bold text-purple-700">Weekly</div>
+                  <div className="text-lg sm:text-2xl font-bold text-purple-700">Fortnightly</div>
                   <div className="text-purple-600 text-xs sm:text-sm mt-0.5">Payment cycle</div>
                 </div>
               </div>
@@ -180,8 +180,7 @@ export function CommissionStructure() {
             {[
               { icon: Gift, label: 'Performance Bonus', desc: 'Extra rewards for top performers', color: 'bg-violet-600' },
               { icon: TrendingUp, label: 'Foreign Trips', desc: 'International incentive tours', color: 'bg-blue-600' },
-              { icon: Calculator, label: 'Loan Benefits', desc: 'Concessional housing loans', color: 'bg-emerald-600' },
-              { icon: Repeat, label: 'Team Building', desc: 'Build and lead your own team', color: 'bg-rose-600' },
+              { icon: Calculator, label: 'Loan Benefits', desc: 'Concessional housing loans and Intrest free Auto Loan', color: 'bg-emerald-600' },
             ].map((item, i) => {
               const Icon = item.icon
               return (

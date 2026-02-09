@@ -144,10 +144,10 @@ export function FAQ() {
                   href="tel:+919876543210"
                   className="inline-flex items-center justify-center px-6 py-3 bg-[#ffc908] text-[#1e40af] font-semibold rounded-lg hover:bg-yellow-400 transition-colors duration-200 shadow-md"
                 >
-                  📞 Call: +91 98765 43210
+                  📞 Call: +91 8800674722
                 </a>
                 <a
-                  href="https://wa.me/919876543210"
+                  href="https://wa.me/918800674722"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors duration-200 shadow-md"

@@ -158,7 +158,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-neutral-700">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="font-bold text-sm" style={{color: '#ffffff !important', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>
-              © 2024 LICNCR. All rights reserved.
+              © 2026 LIC A.M Singh. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link

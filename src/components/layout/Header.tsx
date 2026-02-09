@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button, Logo } from '@/components/ui'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, MessageCircle } from 'lucide-react'
 import { scrollToElement } from '@/lib/utils'
 
 const navigation = [

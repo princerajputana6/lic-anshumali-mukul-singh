@@ -26,8 +26,8 @@ export const applicationFormSchema = z.object({
   ], { message: "Please select your current occupation from the dropdown" }),
   
   reason: z.string()
-    .min(10, "Please tell us more about your motivation (at least 10 characters)")
-    .max(500, "Your response is too long (maximum 500 characters)"),
+    .max(500, "Your response is too long (maximum 500 characters)")
+    .optional(),
   
   education: z.enum([
     "10th",

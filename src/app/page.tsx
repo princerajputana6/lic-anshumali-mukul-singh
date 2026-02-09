@@ -7,6 +7,7 @@ import { CommissionStructure } from '@/components/sections/CommissionStructure'
 import { TargetAudience } from '@/components/sections/TargetAudience'
 import { ApplicationForm } from '@/components/sections/ApplicationForm'
 import { FAQ } from '@/components/sections/FAQ'
+import { ApplicationPopup } from '@/components/sections/ApplicationPopup'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <FAQ />
       </main>
       <Footer />
+      <ApplicationPopup />
       
       {/* Structured Data for SEO */}
       <script

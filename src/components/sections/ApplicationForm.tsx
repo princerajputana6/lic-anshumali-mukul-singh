@@ -83,7 +83,7 @@ export function ApplicationForm() {
             Start Your LIC Career Journey
           </h2>
           <p className="mt-4 text-lg leading-8 font-bold" style={{color: '#1e40af', textShadow: '1px 1px 2px rgba(255,255,255,0.5)'}}>
-            Answer 5 quick questions to get your free study materials and begin your path to financial success
+            Answer Few questions to get your free study materials and begin your path to financial success
           </p>
         </div>
 
@@ -214,19 +214,6 @@ export function ApplicationForm() {
                 </Select>
               </div>
 
-              {/* Reason for Interest */}
-              <div>
-                <Label htmlFor="reason" className="mb-3 block">
-                  Why do you want to become an LIC Agent? *
-                </Label>
-                <Textarea
-                  id="reason"
-                  placeholder="Tell us what motivates you to join LIC as an insurance advisor..."
-                  rows={4}
-                  error={errors.reason?.message}
-                  {...register('reason')}
-                />
-              </div>
 
               {/* Sales Experience */}
               <div>
@@ -271,8 +258,8 @@ export function ApplicationForm() {
             <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
               <CheckCircle className="h-6 w-6" style={{color: '#1e40af'}} />
             </div>
-            <div className="font-medium text-neutral-900">100% Free</div>
-            <div className="text-sm text-neutral-600 mt-1">No hidden charges or fees</div>
+            <div className="font-medium text-neutral-900">24/7 Support</div>
+            <div className="text-sm text-neutral-600 mt-1">Dedicated mentor guidance available</div>
           </div>
           
           <div className="bg-white rounded-lg p-6 shadow-soft">
