@@ -60,12 +60,17 @@ export function ApplicationForm() {
         body: JSON.stringify(data),
       })
 
+      const result = await response.json()
+
       if (response.ok) {
         setSubmitStatus('success')
         setSubmitMessage('Thank you! Your application has been submitted successfully. We will contact you within 24 hours with your free study materials and next steps.')
         reset()
+      } else if (response.status === 409) {
+        setSubmitStatus('error')
+        setSubmitMessage(result.message || 'An application with this email already exists. Please contact us if you need to update your information.')
       } else {
-        throw new Error('Failed to submit application')
+        throw new Error(result.message || 'Failed to submit application')
       }
     } catch (error) {
       setSubmitStatus('error')
@@ -237,10 +242,10 @@ export function ApplicationForm() {
                   className="w-full group shadow-strong hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 hover:bg-blue-800"
                   style={{backgroundColor: '#1e40af', color: '#ffffff'}}
                   loading={isSubmitting}
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || submitStatus === 'success'}
                 >
-                  {isSubmitting ? 'Submitting Details...' : 'Submit Details'}
-                  {!isSubmitting && <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />}
+                  {isSubmitting ? 'Submitting Details...' : submitStatus === 'success' ? 'Application Submitted ✓' : 'Submit Details'}
+                  {!isSubmitting && submitStatus !== 'success' && <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />}
                 </Button>
                 
                 <p className="text-center text-sm text-neutral-500 mt-4">

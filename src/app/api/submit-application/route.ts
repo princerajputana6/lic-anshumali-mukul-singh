@@ -41,9 +41,22 @@ export async function POST(request: NextRequest) {
         // Save to database
         savedApplication = await applicationFormData.save()
         console.log('Application saved to MongoDB:', savedApplication._id)
-      } catch (dbError) {
-        console.error('MongoDB error (continuing without saving):', dbError)
-        // Continue with email sending even if DB save fails
+      } catch (dbError: any) {
+        console.error('MongoDB error:', dbError)
+        
+        // Check for duplicate email error (MongoDB error code 11000)
+        if (dbError.code === 11000 || dbError.message?.includes('E11000')) {
+          return NextResponse.json(
+            { 
+              success: false, 
+              message: 'An application with this email already exists. Please contact us if you need to update your information.' 
+            },
+            { status: 409 }
+          )
+        }
+        
+        // For other DB errors, continue with email sending
+        console.log('Continuing with email sending despite DB error')
       }
     } else {
       console.log('MongoDB not configured - skipping database save')

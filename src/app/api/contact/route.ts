@@ -93,6 +93,8 @@ export async function POST(request: NextRequest) {
             html: adminEmailHtml,
           })
         )
+      } else {
+        console.warn('ADMIN_EMAIL not configured - admin notification will not be sent')
       }
 
       // Send auto-reply to sender
@@ -106,9 +108,11 @@ export async function POST(request: NextRequest) {
       )
 
       // Wait for all emails to be sent
-      await Promise.all(emailPromises)
+      const results = await Promise.all(emailPromises)
+      console.log('Emails sent successfully:', results.map(r => r.data?.id || 'unknown'))
     } else {
-      console.log('Resend not configured - skipping email sending')
+      console.warn('RESEND_API_KEY not configured - email sending is disabled')
+      console.log('Form submission received from:', validatedData.email)
     }
 
     return NextResponse.json(

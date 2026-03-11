@@ -43,20 +43,17 @@ const ApplicationFormSchema = new mongoose.Schema({
   },
   reason: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   }
 }, {
   timestamps: true
 })
 
-// Create indexes for better query performance
-ApplicationFormSchema.index({ email: 1 })
+// Create indexes for better query performance and prevent duplicates
+ApplicationFormSchema.index({ email: 1 }, { unique: true })
 ApplicationFormSchema.index({ mobile: 1 })
 ApplicationFormSchema.index({ createdAt: -1 })
-
-// Prevent duplicate submissions from same email
-ApplicationFormSchema.index({ email: 1 }, { unique: true })
 
 // Clear the model from cache if it exists to ensure schema updates are applied
 if (mongoose.models.ApplicationForm) {
