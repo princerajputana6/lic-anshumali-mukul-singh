@@ -123,8 +123,8 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-neutral-900 mb-1">Email Address</h3>
                       <p className="text-neutral-600">
-                        <a href="mailto:contact@liccareer.com" className="hover:text-primary-600 transition-colors">
-                          contact@liccareer.com
+                        <a href="mailto:ams16071985@gmail.com" className="hover:text-primary-600 transition-colors">
+                          ams16071985@gmail.com
                         </a>
                       </p>
                       <p className="text-sm text-neutral-500 mt-1">We respond within 24 hours</p>

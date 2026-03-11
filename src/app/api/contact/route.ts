@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
           <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
           <p style="font-size: 12px; color: #666; text-align: center;">
             This is an automated response. Please do not reply to this email. 
-            For support, contact us at contact@liccareer.com
+            For support, contact us at ams16071985@gmail.com
           </p>
         </div>
       </div>

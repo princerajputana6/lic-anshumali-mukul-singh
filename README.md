@@ -272,7 +272,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For support and questions:
 
-- **Email**: contact@liccareer.com
+- **Email**: ams16071985@gmail.com
 - **Phone**: +91 98765 43210
 - **Documentation**: Check this README and code comments
 
