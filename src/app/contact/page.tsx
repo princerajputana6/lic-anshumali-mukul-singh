@@ -94,8 +94,8 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-neutral-900 mb-1">Office Address</h3>
                       <p className="text-neutral-600">
-                        123 Business District<br />
-                        Mumbai, Maharashtra 400001<br />
+                        Branch 327 1/28 Second Floor<br />
+                        Asfali Road, New Delhi 110002<br />
                         India
                       </p>
                     </div>
@@ -108,8 +108,8 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-neutral-900 mb-1">Phone Number</h3>
                       <p className="text-neutral-600">
-                        <a href="tel:+919876543210" className="hover:text-primary-600 transition-colors">
-                          +91 98765 43210
+                        <a href="tel:+918800674722" className="hover:text-primary-600 transition-colors">
+                          +91 88006 74722
                         </a>
                       </p>
                       <p className="text-sm text-neutral-500 mt-1">Available 24/7 for calls</p>
@@ -153,7 +153,7 @@ export default function ContactPage() {
                     <Button
                       variant="outline"
                       className="flex-1"
-                      onClick={() => window.open('tel:+919876543210', '_self')}
+                      onClick={() => window.open('tel:+918800674722', '_self')}
                     >
                       <Phone className="h-4 w-4 mr-2" />
                       Call Now
@@ -161,7 +161,7 @@ export default function ContactPage() {
                     <Button
                       variant="outline"
                       className="flex-1 bg-green-50 border-green-200 text-green-700 hover:bg-green-100"
-                      onClick={() => window.open('https://wa.me/919876543210', '_blank')}
+                      onClick={() => window.open('https://wa.me/918800674722', '_blank')}
                     >
                       💬 WhatsApp
                     </Button>
@@ -294,7 +294,7 @@ export default function ContactPage() {
                 Visit Our Office
               </h2>
               <p className="text-neutral-600 max-w-2xl mx-auto">
-                Located in the heart of Mumbai's business district, our office is easily accessible 
+                Located in New Delhi, our office is easily accessible 
                 by public transport and has ample parking facilities.
               </p>
             </div>
@@ -309,7 +309,7 @@ export default function ContactPage() {
                   </p>
                   <Button
                     variant="outline"
-                    onClick={() => window.open('https://maps.google.com/?q=Mumbai+Maharashtra+India', '_blank')}
+                    onClick={() => window.open('https://maps.google.com/?q=Branch+327+1/28+Second+Floor+Asfali+Road+New+Delhi+110002+India', '_blank')}
                   >
                     View on Google Maps
                   </Button>

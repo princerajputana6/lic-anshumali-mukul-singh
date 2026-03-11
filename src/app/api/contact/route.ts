@@ -60,17 +60,17 @@ export async function POST(request: NextRequest) {
             <ul style="margin: 0; padding-left: 20px;">
               <li>Our team will review your message within 24 hours</li>
               <li>We'll respond to your inquiry via email or phone</li>
-              <li>If urgent, feel free to call us at +91 98765 43210</li>
+              <li>If urgent, feel free to call us at +91 88006 74722</li>
             </ul>
           </div>
           
           <div style="text-align: center; margin: 30px 0;">
             <p style="margin-bottom: 15px;">Need immediate assistance?</p>
             <div style="display: inline-block; background: #FF6B35; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin: 0 10px;">
-              📞 Call: +91 98765 43210
+              📞 Call: +91 88006 74722
             </div>
             <div style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin: 0 10px;">
-              💬 WhatsApp: +91 98765 43210
+              💬 WhatsApp: +91 88006 74722
             </div>
           </div>
           

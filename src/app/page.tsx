@@ -43,16 +43,16 @@ export default function Home() {
                 },
                 "contactPoint": {
                   "@type": "ContactPoint",
-                  "telephone": "+91-98765-43210",
+                  "telephone": "+91-88006-74722",
                   "contactType": "customer service",
                   "availableLanguage": ["English", "Hindi"]
                 },
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "123 Business District",
-                  "addressLocality": "Mumbai",
-                  "addressRegion": "Maharashtra",
-                  "postalCode": "400001",
+                  "streetAddress": "Branch 327 1/28 Second Floor, Asfali Road",
+                  "addressLocality": "New Delhi",
+                  "addressRegion": "Delhi",
+                  "postalCode": "110002",
                   "addressCountry": "IN"
                 }
               },
