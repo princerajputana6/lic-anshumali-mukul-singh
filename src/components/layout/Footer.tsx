@@ -51,11 +51,11 @@ export function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 flex-shrink-0" style={{color: '#1e40af'}} />
                 <a
-                  href="mailto:anshuali.msingh@gmail.com"
+                  href="mailto:anshumali.msingh@gmail.com"
                   className="font-bold text-sm hover:text-primary-400 transition-colors"
                   style={{color: '#ffffff !important', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}
                 >
-                  anshuali.msingh@gmail.com
+                  anshumali.msingh@gmail.com
                 </a>
               </div>
               

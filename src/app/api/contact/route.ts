@@ -8,8 +8,16 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     
+    // Log environment configuration (without exposing sensitive data)
+    console.log('=== Email Configuration Check ===')
+    console.log('RESEND_API_KEY configured:', !!process.env.RESEND_API_KEY)
+    console.log('ADMIN_EMAIL:', process.env.ADMIN_EMAIL)
+    console.log('FROM_EMAIL:', process.env.FROM_EMAIL)
+    console.log('Resend client initialized:', !!resend)
+    
     // Validate the form data
     const validatedData = contactFormSchema.parse(body)
+    console.log('Form data validated for:', validatedData.email)
     
     // Create email content for admin
     const adminEmailHtml = `
@@ -81,10 +89,13 @@ export async function POST(request: NextRequest) {
 
     // Send emails if Resend is configured
     if (resend) {
+      console.log('=== Starting Email Send Process ===')
       const emailPromises = []
 
       // Send email to admin
       if (process.env.ADMIN_EMAIL) {
+        console.log('Preparing admin email to:', process.env.ADMIN_EMAIL)
+        console.log('From address:', process.env.FROM_EMAIL || 'noreply@liccareer.com')
         emailPromises.push(
           resend.emails.send({
             from: process.env.FROM_EMAIL || 'noreply@liccareer.com',
@@ -98,6 +109,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Send auto-reply to sender
+      console.log('Preparing auto-reply to:', validatedData.email)
       emailPromises.push(
         resend.emails.send({
           from: process.env.FROM_EMAIL || 'noreply@liccareer.com',
@@ -108,8 +120,19 @@ export async function POST(request: NextRequest) {
       )
 
       // Wait for all emails to be sent
-      const results = await Promise.all(emailPromises)
-      console.log('Emails sent successfully:', results.map(r => r.data?.id || 'unknown'))
+      try {
+        const results = await Promise.all(emailPromises)
+        console.log('✅ Emails sent successfully!')
+        console.log('Email IDs:', results.map(r => r.data?.id || 'unknown'))
+        results.forEach((result, index) => {
+          if (result.error) {
+            console.error(`Email ${index + 1} error:`, result.error)
+          }
+        })
+      } catch (emailError) {
+        console.error('❌ Email sending failed:', emailError)
+        throw emailError
+      }
     } else {
       console.warn('RESEND_API_KEY not configured - email sending is disabled')
       console.log('Form submission received from:', validatedData.email)

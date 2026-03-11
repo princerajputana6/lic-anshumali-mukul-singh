@@ -10,8 +10,16 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     
+    // Log environment configuration
+    console.log('=== Application Form - Email Configuration ===')
+    console.log('RESEND_API_KEY configured:', !!process.env.RESEND_API_KEY)
+    console.log('ADMIN_EMAIL:', process.env.ADMIN_EMAIL)
+    console.log('FROM_EMAIL:', process.env.FROM_EMAIL)
+    console.log('Resend client initialized:', !!resend)
+    
     // Validate the form data
     const validatedData = applicationFormSchema.parse(body)
+    console.log('Application validated for:', validatedData.email)
     
     // Only connect to MongoDB if MONGODB_URI is configured
     let savedApplication = null
@@ -75,10 +83,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Education:</strong> ${validatedData.education}</p>
         <p><strong>Sales Experience:</strong> ${validatedData.salesExperience}</p>
       </div>
-      <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <h3>Reason for Interest:</h3>
-        <p>${validatedData.reason}</p>
-      </div>
+    
       <p><em>Application submitted on: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</em></p>
     `
 
@@ -139,10 +144,13 @@ export async function POST(request: NextRequest) {
 
     // Send emails if Resend is configured
     if (resend) {
+      console.log('=== Starting Application Email Send ===')
       const emailPromises = []
 
       // Send email to admin
       if (process.env.ADMIN_EMAIL) {
+        console.log('Preparing admin notification to:', process.env.ADMIN_EMAIL)
+        console.log('From address:', process.env.FROM_EMAIL || 'noreply@liccareer.com')
         emailPromises.push(
           resend.emails.send({
             from: process.env.FROM_EMAIL || 'noreply@liccareer.com',
@@ -151,9 +159,12 @@ export async function POST(request: NextRequest) {
             html: adminEmailHtml,
           })
         )
+      } else {
+        console.warn('ADMIN_EMAIL not configured - skipping admin notification')
       }
 
       // Send confirmation email to applicant
+      console.log('Preparing confirmation email to:', validatedData.email)
       emailPromises.push(
         resend.emails.send({
           from: process.env.FROM_EMAIL || 'noreply@liccareer.com',
@@ -164,7 +175,19 @@ export async function POST(request: NextRequest) {
       )
 
       // Wait for all emails to be sent
-      await Promise.all(emailPromises)
+      try {
+        const results = await Promise.all(emailPromises)
+        console.log('✅ Application emails sent successfully!')
+        console.log('Email IDs:', results.map(r => r.data?.id || 'unknown'))
+        results.forEach((result, index) => {
+          if (result.error) {
+            console.error(`Email ${index + 1} error:`, result.error)
+          }
+        })
+      } catch (emailError) {
+        console.error('❌ Application email sending failed:', emailError)
+        throw emailError
+      }
     } else {
       console.log('Resend not configured - skipping email sending')
     }
